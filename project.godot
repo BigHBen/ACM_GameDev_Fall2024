@@ -11,5 +11,5 @@ config_version=5
 [application]
 
 config/name="GameDevFall2024_QYLG"
-config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://Icon/casino-chip.png"
