@@ -1,0 +1,192 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv6dr8u5h0gnw"]
+
+[ext_resource type="Script" path="res://Scripts/hub.gd" id="1_hugjr"]
+[ext_resource type="Texture2D" uid="uid://dwrle8ha70aol" path="res://Assets/Packs/png/paper_panel_242_x_240.png" id="2_w0rdn"]
+
+[sub_resource type="Theme" id="Theme_aohvx"]
+
+[sub_resource type="FontFile" id="FontFile_3ep6k"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/100/0/ascent = 0.0
+cache/0/100/0/descent = 0.0
+cache/0/100/0/underline_position = 0.0
+cache/0/100/0/underline_thickness = 0.0
+cache/0/100/0/scale = 1.0
+cache/0/60/0/ascent = 0.0
+cache/0/60/0/descent = 0.0
+cache/0/60/0/underline_position = 0.0
+cache/0/60/0/underline_thickness = 0.0
+cache/0/60/0/scale = 1.0
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fjkk"]
+font_size = 75
+font_color = Color(0.0400852, 0.00618958, 0.00206772, 1)
+
+[node name="Hub" type="Node2D"]
+script = ExtResource("1_hugjr")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PaperPanel242X240" type="Sprite2D" parent="Node2D"]
+position = Vector2(581.5, 326)
+scale = Vector2(4.69835, 2.79167)
+texture = ExtResource("2_w0rdn")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_aohvx")
+theme_override_colors/font_color = Color(0.784314, 0.603922, 0.717647, 1)
+theme_override_fonts/font = SubResource("FontFile_3ep6k")
+theme_override_font_sizes/font_size = 30
+text = "Companion 1"
+icon = ExtResource("2_w0rdn")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_aohvx")
+theme_override_colors/font_color = Color(0.784314, 0.603922, 0.717647, 1)
+theme_override_fonts/font = SubResource("FontFile_3ep6k")
+theme_override_font_sizes/font_size = 50
+text = "SHOP"
+icon = ExtResource("2_w0rdn")
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_aohvx")
+theme_override_colors/font_color = Color(0.784314, 0.603922, 0.717647, 1)
+theme_override_fonts/font = SubResource("FontFile_3ep6k")
+theme_override_font_sizes/font_size = 50
+text = "SHOP"
+icon = ExtResource("2_w0rdn")
+icon_alignment = 1
+
+[node name="Button5" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_aohvx")
+theme_override_colors/font_color = Color(0.784314, 0.603922, 0.717647, 1)
+theme_override_fonts/font = SubResource("FontFile_3ep6k")
+theme_override_font_sizes/font_size = 50
+text = "SHOP"
+icon = ExtResource("2_w0rdn")
+icon_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 1150.0
+offset_bottom = 648.0
+theme_override_constants/separation = 20
+
+[node name="Day" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Day 1
+"
+label_settings = SubResource("LabelSettings_1fjkk")
+horizontal_alignment = 1
+
+[node name="BillAmount" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "You Owe: $1000"
+label_settings = SubResource("LabelSettings_1fjkk")
+horizontal_alignment = 1
+
+[node name="Current" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Current: $2
+"
+label_settings = SubResource("LabelSettings_1fjkk")
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 400.0
+offset_right = 923.0
+offset_bottom = 608.0
+
+[node name="StartButton" type="Button" parent="UI/MenuButtons"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 123.0
+offset_right = 436.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 40
+text = "Go to Casino (Start)"
+
+[node name="PayBills" type="Button" parent="UI/MenuButtons"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 43.0
+offset_right = 435.0
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 40
+text = "Pay Now"
+
+[node name="Exit" type="Button" parent="UI/MenuButtons"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 123.0
+offset_right = 632.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="ToShop" type="Button" parent="UI/MenuButtons"]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 42.0
+offset_right = 631.0
+offset_bottom = 105.0
+theme_override_font_sizes/font_size = 40
+text = "Shop"
+
+[connection signal="pressed" from="UI/MenuButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="UI/MenuButtons/PayBills" to="." method="_on_pay_bills_pressed"]
+[connection signal="pressed" from="UI/MenuButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="UI/MenuButtons/ToShop" to="." method="_on_to_shop_pressed"]

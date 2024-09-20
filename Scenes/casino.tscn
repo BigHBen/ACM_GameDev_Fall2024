@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3743b7haxrux"]
+
+[ext_resource type="Script" path="res://Scripts/casino.gd" id="1_2k6it"]
+[ext_resource type="Texture2D" uid="uid://bcrsq7ommq5pu" path="res://Assets/random_photos/abstract-blur-defocused-hotel-lobby-600nw-2340724233.webp" id="1_xye6o"]
+[ext_resource type="Texture2D" uid="uid://dih86mgikafow" path="res://Assets/random_photos/png-clipart-man-riding-horse-thoroughbred-the-kentucky-derby-epsom-derby-horse-racing-equestrian-bet-horse-miscellaneous-thumbnail.png" id="2_nvqum"]
+
+[node name="casino" type="Node2D"]
+script = ExtResource("1_2k6it")
+
+[node name="Abstract-blur-defocused-hotel-lobby-600Nw-2340724233" type="Sprite2D" parent="."]
+position = Vector2(548, 307)
+scale = Vector2(1.94167, 1.90452)
+texture = ExtResource("1_xye6o")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartButton" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 513.0
+offset_right = 441.0
+offset_bottom = 576.0
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="Exit" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 529.0
+offset_right = 818.0
+offset_bottom = 592.0
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="HorseMinigame" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 113.0
+offset_right = 412.0
+offset_bottom = 469.0
+icon = ExtResource("2_nvqum")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="pressed" from="UI/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="UI/HorseMinigame" to="." method="_on_horse_minigame_pressed"]

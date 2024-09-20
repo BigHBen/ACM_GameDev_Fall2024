@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="GameDevFall2024_QYLG"
+run/main_scene="res://Scenes/hub.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Icon/casino-chip.png"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.712077, 0.946498, 0.700571, 1)
