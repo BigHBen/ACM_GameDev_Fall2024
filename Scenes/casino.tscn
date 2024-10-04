@@ -44,10 +44,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8vb80")
 
 [node name="HorseMinigame" type="Button" parent="UI/Panel"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 86.0
-offset_right = 237.0
-offset_bottom = 327.0
+offset_left = 5.0
+offset_top = 43.0
+offset_right = 235.0
+offset_bottom = 284.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
 icon = ExtResource("3_w23f4")

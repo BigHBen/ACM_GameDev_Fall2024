@@ -77,12 +77,12 @@ offset_bottom = 278.0
 
 [node name="5_dolar" type="Button" parent="UI/MenuPanel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = SubResource("FontFile_gyxh8")
 theme_override_font_sizes/font_size = 91
 text = "$5"
@@ -92,12 +92,12 @@ vertical_icon_alignment = 2
 
 [node name="10_dollar_bet" type="Button" parent="UI/MenuPanel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = SubResource("FontFile_gyxh8")
 theme_override_font_sizes/font_size = 91
 text = "$10"
@@ -107,12 +107,12 @@ vertical_icon_alignment = 2
 
 [node name="25_dollar_bet" type="Button" parent="UI/MenuPanel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = SubResource("FontFile_gyxh8")
 theme_override_font_sizes/font_size = 91
 text = "$25"
@@ -122,9 +122,9 @@ vertical_icon_alignment = 2
 
 [node name="Panel" type="Panel" parent="UI/MenuPanel"]
 layout_mode = 0
-offset_left = 122.0
+offset_left = 27.0
 offset_top = 285.0
-offset_right = 518.0
+offset_right = 618.0
 offset_bottom = 366.0
 
 [node name="HorseGameStart" type="Button" parent="UI/MenuPanel/Panel"]
@@ -145,6 +145,15 @@ offset_bottom = 74.0
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
+[node name="HorseGameClear" type="Button" parent="UI/MenuPanel/Panel"]
+offset_left = 399.0
+offset_top = 10.0
+offset_right = 541.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 40
+text = "Clear
+"
+
 [node name="bet_stack_coin" parent="." instance=ExtResource("6_jjkp5")]
 visible = false
 position = Vector2(830, 380)
@@ -156,3 +165,4 @@ stream = ExtResource("7_ohw4f")
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/10_dollar_bet" to="." method="_on_ten_dollar_bet_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/25_dollar_bet" to="." method="_on_twenty_five_dollar_bet_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/Panel/HorseGameExit" to="." method="_on_horse_game_exit_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/Panel/HorseGameClear" to="." method="_on_horse_game_clear_pressed"]
