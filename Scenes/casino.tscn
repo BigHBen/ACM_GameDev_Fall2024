@@ -57,6 +57,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Panel2" type="Panel" parent="UI"]
+layout_mode = 0
 offset_left = 350.0
 offset_top = 141.0
 offset_right = 594.0
@@ -76,3 +77,4 @@ expand_icon = true
 
 [connection signal="pressed" from="UI/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="UI/Panel/HorseMinigame" to="." method="_on_horse_minigame_pressed"]
+[connection signal="pressed" from="UI/Panel2/SlotsMinigame" to="." method="_on_slots_minigame_pressed"]
