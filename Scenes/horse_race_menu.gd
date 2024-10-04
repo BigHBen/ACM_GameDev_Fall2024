@@ -62,4 +62,3 @@ func _on_twenty_five_dollar_bet_pressed():
 		spawn_coin(25)
 		audio_player.play(0.3)
 		bet_amount+=25
-
