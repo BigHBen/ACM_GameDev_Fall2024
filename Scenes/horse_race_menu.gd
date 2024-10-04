@@ -68,5 +68,7 @@ func _on_horse_game_clear_pressed() -> void:
 		x.queue_free()
 	spawned_coins = []
 	spawn_position = Vector2(830, 380)  # adjust initial spawn position
+	bet_amount = 0
+	print("💸 Bet Amount: $", bet_amount, "💰")
 	pass # Replace with function body.
 

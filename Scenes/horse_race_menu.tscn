@@ -146,6 +146,7 @@ theme_override_font_sizes/font_size = 40
 text = "Exit"
 
 [node name="HorseGameClear" type="Button" parent="UI/MenuPanel/Panel"]
+layout_mode = 0
 offset_left = 399.0
 offset_top = 10.0
 offset_right = 541.0
