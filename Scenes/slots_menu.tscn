@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ie2u7eert0f5"]
+[gd_scene load_steps=9 format=3 uid="uid://ie2u7eert0f5"]
 
 [ext_resource type="Script" path="res://slots_menu.gd" id="1_dxni7"]
 [ext_resource type="Texture2D" uid="uid://df8agdm7et1go" path="res://Assets/random_photos/Slots_background.jpg" id="2_mv87s"]
 [ext_resource type="Texture2D" uid="uid://dnr2djerda2wx" path="res://Assets/Packs/Top-Down/Chips/gamedevchips(rgb)LargeOutline/RedChipLargeOutline.png" id="3_44qyf"]
 [ext_resource type="Texture2D" uid="uid://b1kncbvfybx8c" path="res://Assets/Packs/Top-Down/Chips/gamedevchips(rgb)LargeOutline/BlueChipLargeOutline.png" id="4_ejykk"]
 [ext_resource type="Texture2D" uid="uid://bauu7mw4t452n" path="res://Assets/Packs/Top-Down/Chips/gamedevchips(rgb)LargeOutline/GreenChipLargeOutline.png" id="5_x06th"]
+[ext_resource type="PackedScene" uid="uid://bjpcdxp8og41e" path="res://Scenes/bet_stack_coin.tscn" id="6_54d0m"]
+[ext_resource type="AudioStream" uid="uid://d25h2f3i2bdqs" path="res://Audio/cha ching sound effect download.wav" id="7_ktaqx"]
 
 [sub_resource type="FontFile" id="FontFile_r2x5s"]
 cache/0/16/0/ascent = 0.0
@@ -143,4 +145,15 @@ offset_bottom = 74.0
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
+[node name="bet_stack_coin" parent="." instance=ExtResource("6_54d0m")]
+visible = false
+position = Vector2(830, 380)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(830, 380)
+stream = ExtResource("7_ktaqx")
+
+[connection signal="pressed" from="UI/MenuPanel/HBoxContainer/5_dolar" to="." method="_on__dolar_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/HBoxContainer/10_dollar_bet" to="." method="_on_10_dollar_bet_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/HBoxContainer/25_dollar_bet" to="." method="_on_25_dollar_bet_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/Panel/SlotsGameExit" to="." method="_on_slots_game_exit_pressed"]
