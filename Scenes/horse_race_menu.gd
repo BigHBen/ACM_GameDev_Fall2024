@@ -63,11 +63,10 @@ func _on_twenty_five_dollar_bet_pressed():
 		audio_player.play(0.3)
 		bet_amount+=25
 
-
-
 func _on_horse_game_clear_pressed() -> void:
 	for x in spawned_coins:
 		x.queue_free()
 	spawned_coins = []
 	spawn_position = Vector2(830, 380)  # adjust initial spawn position
 	pass # Replace with function body.
+
