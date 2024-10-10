@@ -1,24 +1,20 @@
 extends Node2D
 
-
 var bet_amount = 0 : set = _set_bet, get = _get_bet
-var casino = "res://Scenes/casino.tscn"
-#Extras
+var casino ="res://Scenes/casino.tscn"
 var coin_scene = preload("res://Scenes/bet_stack_coin.tscn")  # replace with your coin scene path
 var spawn_position = Vector2(830, 380)  # adjust initial spawn position
 var spawned_coins = []
 var coin_limit = 10
 @onready var audio_player = $AudioStreamPlayer2D
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	pass
-
 
 func _set_bet(new_amount):
 	bet_amount = new_amount
@@ -26,6 +22,9 @@ func _set_bet(new_amount):
 
 func _get_bet():
 	return bet_amount
+
+func _on_slots_game_exit_pressed() -> void:
+	get_tree().change_scene_to_file(casino)
 
 func spawn_coin(type):
 	var coin_instance = coin_scene.instantiate()
@@ -42,24 +41,27 @@ func spawn_coin(type):
 	spawn_position.y -= 10  # adjust spacing between coins
 
 
-func _on_check_box_pressed():
+func _on_5_dolar_pressed() -> void:
 	if spawned_coins.size() < coin_limit:
 		spawn_coin(5)
 		audio_player.play(0.3)
 		bet_amount+=5
 
-func _on_ten_dollar_bet_pressed():
+
+func _on_10_dollar_bet_pressed() -> void:
 	if spawned_coins.size() < coin_limit:
 		spawn_coin(10)
 		audio_player.play(0.3)
 		bet_amount+=10
 
-func _on_twenty_five_dollar_bet_pressed():
+
+func _on_25_dollar_bet_pressed() -> void:
 	if spawned_coins.size() < coin_limit:
 		spawn_coin(25)
 		audio_player.play(0.3)
 		bet_amount+=25
 
-
-func _on_horse_race_game_exit_pressed() -> void:
-	get_tree().change_scene_to_file(casino)
+func _on_slots_game_start_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/slots_game.tscn")
+	
+signal get_Bet(bet)

@@ -3,8 +3,9 @@ extends Node2D
 
 #Dictionary w minigame scene paths
 var minigames =  {
-	horse_minigame = "res://Scenes/horse_race_menu.tscn" #Minigame select scene
-}
+	horse_minigame = "res://Scenes/horse_race_menu.tscn", #Minigame select scene
+	slots_minigame = "res://Scenes/slots_menu.tscn"
+	}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,3 +24,6 @@ func _on_horse_minigame_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+func _on_slots_minigame_pressed() -> void:
+	get_tree().change_scene_to_file(minigames["slots_minigame"])
