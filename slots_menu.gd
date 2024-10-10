@@ -25,6 +25,7 @@ func _get_bet():
 
 func _on_slots_game_exit_pressed() -> void:
 	get_tree().change_scene_to_file(casino)
+
 func spawn_coin(type):
 	var coin_instance = coin_scene.instantiate()
 	coin_instance.position = spawn_position
@@ -40,7 +41,7 @@ func spawn_coin(type):
 	spawn_position.y -= 10  # adjust spacing between coins
 
 
-func _on__dolar_pressed() -> void:
+func _on_5_dolar_pressed() -> void:
 	if spawned_coins.size() < coin_limit:
 		spawn_coin(5)
 		audio_player.play(0.3)
@@ -59,3 +60,8 @@ func _on_25_dollar_bet_pressed() -> void:
 		spawn_coin(25)
 		audio_player.play(0.3)
 		bet_amount+=25
+
+func _on_slots_game_start_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/slots_game.tscn")
+	
+signal get_Bet(bet)

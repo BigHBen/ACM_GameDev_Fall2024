@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ie2u7eert0f5"]
+[gd_scene load_steps=9 format=3 uid="uid://crp780ib7oqmq"]
 
 [ext_resource type="Script" path="res://slots_menu.gd" id="1_dxni7"]
 [ext_resource type="Texture2D" uid="uid://df8agdm7et1go" path="res://Assets/random_photos/Slots_background.jpg" id="2_mv87s"]
@@ -127,7 +127,7 @@ offset_top = 285.0
 offset_right = 518.0
 offset_bottom = 366.0
 
-[node name="HorseGameStart" type="Button" parent="UI/MenuPanel/Panel"]
+[node name="SlotsGameStart" type="Button" parent="UI/MenuPanel/Panel"]
 layout_mode = 2
 offset_left = 39.0
 offset_top = 11.0
@@ -153,7 +153,9 @@ position = Vector2(830, 380)
 position = Vector2(830, 380)
 stream = ExtResource("7_ktaqx")
 
-[connection signal="pressed" from="UI/MenuPanel/HBoxContainer/5_dolar" to="." method="_on__dolar_pressed"]
+[connection signal="get_Bet" from="." to="." method="_on_get_bet"]
+[connection signal="pressed" from="UI/MenuPanel/HBoxContainer/5_dolar" to="." method="_on_5_dolar_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/10_dollar_bet" to="." method="_on_10_dollar_bet_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/25_dollar_bet" to="." method="_on_25_dollar_bet_pressed"]
+[connection signal="pressed" from="UI/MenuPanel/Panel/SlotsGameStart" to="." method="_on_slots_game_start_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/Panel/SlotsGameExit" to="." method="_on_slots_game_exit_pressed"]
