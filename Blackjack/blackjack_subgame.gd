@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 @export var shoeSize = 1;
 var can_act = true
@@ -6,11 +6,15 @@ var money = 25
 
 var timer 
 var bet = 0
-var hand_locations = [$Dealer_pos, $Hand_pos1, $Hand_pos2, $Hand_pos3, $Hand_pos4]
+@onready var hand_locations = [$Hand_pos1.position, $Hand_pos2.position, $Hand_pos3.position, $Hand_pos4.position]
+var seats = ["", "Bot", "Bot", "Bot"]
 
+var dealt = true
+var currseat = 3
 
 var card_prefab = preload("res://Blackjack/card.tscn")
 var path_to_cards = "res://Assets/Packs/Top-Down/cropped_cards/"
+var path_to_face_down = "res://Assets/Packs/Top-Down/Cards/image_part_001.jpg"
 
 var deck = [
 	["Ace", "Clubs", "c (1).png"], [2, "Clubs", "c (2).png"], [3, "Clubs", "c (3).png"], [4, "Clubs", "c (4).png"], [5, "Clubs", "c (5).png"], [6, "Clubs", "c (6).png"], [7, "Clubs", "c (7).png"], [8, "Clubs", "c (8).png"], [9, "Clubs", "c (9).png"], [10, "Clubs", "c (10).png"], ["Jack", "Clubs", "c (11).png"], ["Queen", "Clubs", "c (12).png"], ["King", "Clubs", "c (13).png"],
@@ -19,45 +23,72 @@ var deck = [
 	["Ace", "Spades", "s (1).png"], [2, "Spades", "s (2).png"], [3, "Spades", "s (3).png"], [4, "Spades", "s (4).png"], [5, "Spades", "s (5).png"], [6, "Spades", "s (6).png"], [7, "Spades", "s (7).png"], [8, "Spades", "s (8).png"], [9, "Spades", "s (9).png"], [10, "Spades", "s (10).png"], ["Jack", "Spades", "s (11).png"], ["Queen", "Spades", "s (12).png"], ["King", "Spades", "s (13).png"]
 ]
 var shoe = []
-
+var hand = []
 var score = [[],[],[],[],[]]
+var dealerhand = []
 
-func ace_array(hand: Array, curr_sum:int) -> Array:
+
+func count(hand: Array) -> int:
+	var curr_sum = 0
+	var ace_count = 0
+
+	# First, calculate the total value of the hand and count Aces
 	for card in hand:
-		if curr_sum < 22:
-			return hand
-		if card == 11:
-			card = 1
-	return hand
+		curr_sum += card
+		if card == 11:  # Assuming Aces are represented as 11
+			ace_count += 1
 
-func instantiate_Card(card: Array, seat: int) -> void:
+	# Adjust for Aces if the total is over 21
+	while curr_sum > 21 and ace_count > 0:
+		curr_sum -= 10  # Treat Ace as 1 instead of 11
+		ace_count -= 1
+	return curr_sum
+		
+
+func instantiate_Card(card: Array, seat: int) -> int:
+	#dealer logic
 	var val = card [0]
 	var suit = card[1]
 	var pic = card[2]  
 	var loaded_card = card_prefab.instantiate()
 	print("trying" + str(card))
-	loaded_card.get_child(0).set_texture(load(path_to_cards + pic))
+	print(seat)
+	if seat == -1 and dealerhand.size()  == 0:
+		loaded_card.get_child(0).set_texture(load(path_to_face_down))
+	else:
+		loaded_card.get_child(0).set_texture(load(path_to_cards + pic))
+	loaded_card.set_position($Deck_pos.position)
+	
 	add_child(loaded_card)
-	score[seat].append(val)
+	
+	var tween = get_tree().create_tween()
+# Move the card to the specified hand position
+	tween.bind_node($Deck_pos)
+	tween.tween_property(
+		loaded_card,                           # The card to animate
+		"position",                            # Property to animate
+		hand_locations[seat],   # Target hand position
+		.1                # Easing type (ease in and out)
+)
+	if seat != -1:
+		score[seat].append(val)
+	else:
+		dealerhand.append(val)
 	var points = 0
-	var hand = []
+	hand = []
 	for card_value in score[seat]:
 		if str(card_value) != "Ace":
 			if str(card_value) == "Jack" or str(card_value) == "Queen" or str(card_value) == "King":
-				points += 10  # Add 10 points for Jack, Queen, or King
-				
+				hand.append(10)
 			else:
-				points += int(card_value)  # Convert the numeric value to an integer and add to points
+				hand.append(int(card_value)) 
 		else:
-		# Handle the Ace logic
 			if points + 11 <= 21:
-				hand.append(11)  # Add 11 for Ace
+				hand.append(11)  
+				points+= hand[-1] 
 			else:
-				hand.append(1)   # Add 1 for Ace
-	for i in hand:
-		if points < 11:
-			
-	print(points)
+				hand.append(1)
+	return(count(hand))
 
 
 
@@ -69,11 +100,23 @@ func _ready() -> void:
 	shoe.shuffle()
 	timer = $bet_clock
 	instantiate_Card(shoe.pop_front(), 0)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if !timer.is_stopped() and can_act == false:
-		can_act = true 
+	if  can_act == false:
+		can_act = true
+	elif dealt:
+		for i in range(3):
+			instantiate_Card(shoe.pop_front(),i)
+		instantiate_Card(shoe.pop_front(), -1)
+		for i in range(3):
+			instantiate_Card(shoe.pop_front(),i)
+		instantiate_Card(shoe.pop_front(), -1)
+		dealt = false
+	
+		
+	
 
 
 

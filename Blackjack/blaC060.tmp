@@ -4,6 +4,7 @@
 
 [node name="Blackjack_subgame" type="Node"]
 script = ExtResource("1_ll12n")
+shoeSize = null
 
 [node name="bet_clock" type="Timer" parent="."]
 wait_time = 5.0

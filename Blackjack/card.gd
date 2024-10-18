@@ -1,13 +1,13 @@
 extends Control
 
 @export var  val = 0
+@export var face_down = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-	
-# Change the button when the mouse enters (hover effect)
+	# when the mouse enters (hover effect)
 # Revert changes when the mouse leaves
 func _on_Mouse_Exited():
 	modulate = Color(1, 1, 1)  # Reset color to default (white)

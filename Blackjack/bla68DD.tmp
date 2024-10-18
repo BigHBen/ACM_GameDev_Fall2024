@@ -2,14 +2,19 @@
 
 [ext_resource type="Script" path="res://Blackjack/blackjack_subgame.gd" id="1_ll12n"]
 
-[node name="Blackjack_subgame" type="Node"]
+[node name="Blackjack_subgame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ll12n")
 
 [node name="bet_clock" type="Timer" parent="."]
 wait_time = 5.0
 
 [node name="Deck_pos" type="Control" parent="."]
-layout_mode = 3
 anchors_preset = 0
 offset_left = 902.0
 offset_top = 126.0
