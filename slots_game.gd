@@ -6,6 +6,8 @@ var slots = ["res://Assets/random_photos/Bell.png",
 			"res://Assets/random_photos/Cherries.png",
 			"res://Assets/random_photos/Diamond.png",
 			"res://Assets/random_photos/seven.png"]
+@onready var button: Button = $Control/Button
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Randomized_Pic()
@@ -21,7 +23,9 @@ func Randomized_Pic():
 	var pic1 = randi_range(0,3)
 	var pic2 = randi_range(0,3)
 	var pic3 = randi_range(0,3)
+	button.disabled = true
 	await get_tree().create_timer(3.0).timeout
+	
 	$Control/Panel/HBoxContainer/Slot1.texture = load(slots[pic1])
 	$Control/Panel/HBoxContainer/Slot2.texture = load(slots[pic2])
 	$Control/Panel/HBoxContainer/Slot3.texture = load(slots[pic3])
@@ -40,6 +44,7 @@ func Randomized_Pic():
 		print("You Win:",win)
 	else:
 		print("You lose")
+	button.disabled = false
 	
 	
 
