@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjpcdxp8og41e"]
 
 [ext_resource type="Texture2D" uid="uid://ccdciegrhqbeh" path="res://Assets/Packs/Isometric/Chips/ChipsA_Flat_Small-128x72-removebg-preview.png" id="1_fyvna"]
-[ext_resource type="Script" path="res://Scenes/bet_stack_coin.gd" id="2_7uqe4"]
+[ext_resource type="Script" path="res://Scripts/bet_stack_coin.gd" id="2_7uqe4"]
 
 [node name="bet_stack_coin" type="Sprite2D"]
 position = Vector2(833, 363)

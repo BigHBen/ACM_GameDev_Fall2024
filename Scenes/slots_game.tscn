@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://18btduu4xcao"]
 
-[ext_resource type="Script" path="res://slots_game.gd" id="1_vdhey"]
+[ext_resource type="Script" path="res://Scripts/slots_game.gd" id="1_vdhey"]
 [ext_resource type="Texture2D" uid="uid://udu8c42r8lj" path="res://Assets/random_photos/Slots_Machine.png" id="2_cfer3"]
 [ext_resource type="Texture2D" uid="uid://cjd3ff31vy68i" path="res://Assets/random_photos/seven.png" id="2_rfymn"]
 
