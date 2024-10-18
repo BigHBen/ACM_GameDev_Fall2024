@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://bso6kl161cfv0"]
+
+[ext_resource type="Script" path="res://Blackjack/blackjack_subgame.gd" id="1_ll12n"]
+
+[node name="Blackjack_subgame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ll12n")
+shoeSize = null
+
+[node name="bet_clock" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Deck_pos" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 902.0
+offset_top = 126.0
+offset_right = 942.0
+offset_bottom = 166.0
+
+[node name="Hand_pos1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 988.0
+offset_top = 348.0
+offset_right = 1028.0
+offset_bottom = 388.0
+
+[node name="Hand_pos2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 749.0
+offset_top = 345.0
+offset_right = 789.0
+offset_bottom = 385.0
+
+[node name="Hand_pos3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 425.0
+offset_top = 352.0
+offset_right = 465.0
+offset_bottom = 392.0
+
+[node name="Hand_pos4" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 163.0
+offset_top = 331.0
+offset_right = 203.0
+offset_bottom = 371.0
+
+[node name="Dealer_pos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 542.0
+offset_top = 83.0
+offset_right = 582.0
+offset_bottom = 123.0
