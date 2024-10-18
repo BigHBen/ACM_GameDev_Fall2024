@@ -1,0 +1,237 @@
+[gd_scene load_steps=38 format=3 uid="uid://dwi5kys3cs1wp"]
+
+[ext_resource type="Script" path="res://Scenes/horse_race.gd" id="1_gamog"]
+[ext_resource type="Texture2D" uid="uid://bi4djjr3r0274" path="res://Assets/random_photos/horse_racing/dirt.png" id="1_x0sju"]
+[ext_resource type="Script" path="res://Scenes/ground_parallax.gd" id="2_k30sr"]
+[ext_resource type="Texture2D" uid="uid://cvtkcmejfekwt" path="res://Assets/random_photos/horse_racing/horizontal-seamless-pattern-with-clouds/1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg" id="3_qka38"]
+[ext_resource type="Texture2D" uid="uid://bwf3t1jjwms3e" path="res://Assets/random_photos/horse_racing/fence.png" id="4_fts3r"]
+[ext_resource type="Texture2D" uid="uid://w1sdao75fe3g" path="res://Assets/random_photos/horse_racing/grass_PNG109094.png" id="4_i6han"]
+[ext_resource type="Texture2D" uid="uid://bi677t50umj3i" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_00_delay-0.08s.png" id="7_f4ghh"]
+[ext_resource type="Texture2D" uid="uid://dd3x06p4pmgny" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_01_delay-0.09s.png" id="8_3g8px"]
+[ext_resource type="Script" path="res://Scenes/horse.gd" id="8_raj8v"]
+[ext_resource type="Texture2D" uid="uid://cvuemctaanqir" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_02_delay-0.08s.png" id="9_o6ww4"]
+[ext_resource type="Texture2D" uid="uid://brbj6qn7ne318" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_03_delay-0.08s.png" id="10_y4tk2"]
+[ext_resource type="Texture2D" uid="uid://drlndhratx0cl" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_04_delay-0.09s.png" id="11_lby21"]
+[ext_resource type="Texture2D" uid="uid://ehepwvygxl8k" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_05_delay-0.08s.png" id="12_45tn6"]
+[ext_resource type="Texture2D" uid="uid://ddut3tf4hosfa" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_06_delay-0.08s.png" id="13_vvq3y"]
+[ext_resource type="Texture2D" uid="uid://caww8v3v3g56k" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_07_delay-0.09s.png" id="14_tnk8q"]
+[ext_resource type="Texture2D" uid="uid://bgcf2ncxsrqhr" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_08_delay-0.08s.png" id="15_qmx1r"]
+[ext_resource type="Texture2D" uid="uid://c4rm6qgdlmm62" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_09_delay-0.08s.png" id="16_kq10a"]
+[ext_resource type="Texture2D" uid="uid://drxfk3eplr82m" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_10_delay-0.09s.png" id="17_31j58"]
+[ext_resource type="Texture2D" uid="uid://g8d4fmt7o6fg" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_11_delay-0.08s.png" id="18_xitki"]
+[ext_resource type="Texture2D" uid="uid://c317e63h7u85q" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_12_delay-0.08s.png" id="19_2x3fa"]
+[ext_resource type="Texture2D" uid="uid://dflmko5nr5cve" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_13_delay-0.09s.png" id="20_a0bew"]
+[ext_resource type="Texture2D" uid="uid://cyx1dj1y8tuy3" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_14_delay-0.08s.png" id="21_xicdy"]
+[ext_resource type="Texture2D" uid="uid://6ydmlhib2rmb" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_15_delay-0.08s.png" id="22_edr10"]
+[ext_resource type="Texture2D" uid="uid://cduvey2mixrhv" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_16_delay-0.09s.png" id="23_gj0jw"]
+[ext_resource type="Texture2D" uid="uid://xfp8xsa8lpc6" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_17_delay-0.08s.png" id="24_u1bjt"]
+[ext_resource type="Texture2D" uid="uid://y6xe12whj2gb" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_18_delay-0.08s.png" id="25_rb0dk"]
+[ext_resource type="Texture2D" uid="uid://c4cqdp4tnnae4" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_19_delay-0.09s.png" id="26_ar7s5"]
+[ext_resource type="Texture2D" uid="uid://705e0bl0ef2j" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_20_delay-0.08s.png" id="27_xs5su"]
+[ext_resource type="Texture2D" uid="uid://c0myhqj5ys3ho" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_21_delay-0.08s.png" id="28_hx2u1"]
+[ext_resource type="Texture2D" uid="uid://ddwwpqyfodo85" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_22_delay-0.09s.png" id="29_sv7di"]
+[ext_resource type="Texture2D" uid="uid://babkjrt6wl5bu" path="res://Assets/random_photos/horse_racing/Animations/Horse/Running/frame_23_delay-0.09s.png" id="30_80wup"]
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="31_dmky8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gi1fc"]
+texture = ExtResource("1_x0sju")
+texture_region_size = Vector2i(768, 438)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_okukc"]
+tile_size = Vector2i(768, 438)
+sources/2 = SubResource("TileSetAtlasSource_gi1fc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxl4n"]
+font = ExtResource("31_dmky8")
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4dhm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_f4ghh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3g8px")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o6ww4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_y4tk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lby21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_45tn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vvq3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tnk8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qmx1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kq10a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_31j58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_xitki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_2x3fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_a0bew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_xicdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_edr10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gj0jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_u1bjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rb0dk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ar7s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xs5su")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_hx2u1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_sv7di")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_80wup")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgkuy"]
+size = Vector2(256, 144)
+
+[node name="horse_race" type="Node2D"]
+script = ExtResource("1_gamog")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+script = ExtResource("2_k30sr")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(16, 0)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2880, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(463.75, 96.0001)
+scale = Vector2(0.182952, 0.164571)
+texture = ExtResource("3_qka38")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1423.75, 96.0001)
+scale = Vector2(0.182952, 0.164571)
+texture = ExtResource("3_qka38")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(2383.75, 96.0001)
+scale = Vector2(0.182952, 0.164571)
+texture = ExtResource("3_qka38")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_mirroring = Vector2(2304, 0)
+
+[node name="grass" type="Node2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+
+[node name="GrassPng109094" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/grass"]
+position = Vector2(474, 168)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i6han")
+
+[node name="GrassPng109095" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/grass"]
+position = Vector2(1144, 168)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i6han")
+
+[node name="GrassPng109096" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/grass"]
+position = Vector2(1829, 168)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i6han")
+
+[node name="dirt_track" type="Node2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+
+[node name="TileMap" type="TileMap" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/dirt_track"]
+position = Vector2(0, 212)
+tile_set = SubResource("TileSet_okukc")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 2, 0, 1, 2, 0, 2, 2, 0)
+
+[node name="fences" type="Node2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/fences"]
+position = Vector2(384, 184)
+texture = ExtResource("4_fts3r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/fences"]
+position = Vector2(1152, 184)
+texture = ExtResource("4_fts3r")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/fences"]
+position = Vector2(1920, 184)
+texture = ExtResource("4_fts3r")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 192.0
+offset_right = 669.0
+offset_bottom = 285.0
+text = "READY"
+label_settings = SubResource("LabelSettings_mxl4n")
+horizontal_alignment = 1
+
+[node name="Start_Timer" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
+[node name="Horse" type="CharacterBody2D" parent="."]
+script = ExtResource("8_raj8v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Horse"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_m4dhm")
+autoplay = "default"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Horse"]
+position = Vector2(-16, 16)
+shape = SubResource("RectangleShape2D_pgkuy")
+
+[connection signal="timeout" from="Start_Timer" to="." method="_on_start_timer_timeout"]
