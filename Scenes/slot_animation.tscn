@@ -25,5 +25,5 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Slot" type="AnimatedSprite2D"]
+[node name="Slot_Animation" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ai7km")
