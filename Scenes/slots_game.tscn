@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://18btduu4xcao"]
+[gd_scene load_steps=5 format=3 uid="uid://18btduu4xcao"]
 
 [ext_resource type="Script" path="res://Scripts/slots_game.gd" id="1_vdhey"]
+[ext_resource type="PackedScene" uid="uid://dl20ptmkwt040" path="res://Scenes/slot.tscn" id="2_arwdp"]
 [ext_resource type="Texture2D" uid="uid://udu8c42r8lj" path="res://Assets/random_photos/Slots_Machine.png" id="2_cfer3"]
-[ext_resource type="Texture2D" uid="uid://cjd3ff31vy68i" path="res://Assets/random_photos/seven.png" id="2_rfymn"]
+[ext_resource type="Texture2D" uid="uid://cjd3ff31vy68i" path="res://Assets/random_photos/seven.png" id="3_uf1h0"]
 
 [node name="Slots_Game" type="Node2D"]
 script = ExtResource("1_vdhey")
@@ -33,17 +34,33 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="Slot1" type="Sprite2D" parent="Control/Panel/HBoxContainer"]
-position = Vector2(69, 90)
-texture = ExtResource("2_rfymn")
+[node name="Results" type="Node" parent="Control/Panel/HBoxContainer"]
 
-[node name="Slot2" type="Sprite2D" parent="Control/Panel/HBoxContainer"]
-position = Vector2(204, 90)
-texture = ExtResource("2_rfymn")
+[node name="Slot_pic" type="Sprite2D" parent="Control/Panel/HBoxContainer/Results"]
+visible = false
+position = Vector2(417, 306.998)
+texture = ExtResource("3_uf1h0")
 
-[node name="Slot3" type="Sprite2D" parent="Control/Panel/HBoxContainer"]
-position = Vector2(337, 90)
-texture = ExtResource("2_rfymn")
+[node name="Slot2_pic" type="Sprite2D" parent="Control/Panel/HBoxContainer/Results"]
+visible = false
+position = Vector2(558, 306.998)
+texture = ExtResource("3_uf1h0")
+
+[node name="Slot3_pic" type="Sprite2D" parent="Control/Panel/HBoxContainer/Results"]
+visible = false
+position = Vector2(694, 306.998)
+texture = ExtResource("3_uf1h0")
+
+[node name="Animation" type="Node" parent="Control/Panel/HBoxContainer"]
+
+[node name="Slot" parent="Control/Panel/HBoxContainer/Animation" instance=ExtResource("2_arwdp")]
+position = Vector2(417, 306.998)
+
+[node name="Slot2" parent="Control/Panel/HBoxContainer/Animation" instance=ExtResource("2_arwdp")]
+position = Vector2(558, 306.998)
+
+[node name="Slot3" parent="Control/Panel/HBoxContainer/Animation" instance=ExtResource("2_arwdp")]
+position = Vector2(694, 306.998)
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 0
