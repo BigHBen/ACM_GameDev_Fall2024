@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh1jrny6htp1j"]
+[gd_scene load_steps=4 format=3 uid="uid://cjoarybbdodvg"]
 
 [ext_resource type="Texture2D" uid="uid://d3l4a68wye4c7" path="res://Assets/random_photos/punch_icon.webp" id="1_5cfuo"]
 [ext_resource type="Script" path="res://Scripts/punch_spawn.gd" id="1_b35mr"]

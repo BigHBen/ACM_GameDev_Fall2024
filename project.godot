@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/hub.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Icon/casino-chip.png"
 
+[autoload]
+
+MinigameManager="*res://minigame_manager.tscn"
+
 [display]
 
 window/stretch/mode="viewport"
