@@ -12,8 +12,12 @@ config_version=5
 
 config/name="GameDevFall2024_QYLG"
 run/main_scene="res://Scenes/hub.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Icon/casino-chip.png"
+
+[autoload]
+
+MinigameManager="*res://Scenes/minigame_manager.tscn"
 
 [display]
 
