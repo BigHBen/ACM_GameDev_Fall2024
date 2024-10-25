@@ -8,6 +8,11 @@ var punch_spawn_scene = preload("res://Scenes/punch_spawn.tscn")
 #	so that a player cannot just spam click the button to win the minigame.
 @onready var spawn_punch_timer = $spawn_punch_timer
 @onready var can_hit_timer = $can_hit_timer
+@onready var temp_punch_timer = $"temp punch ani"
+
+#	temp fists
+@onready var fists1 = $PlaceholderFists2
+@onready var fists2 = $PlaceholderPunch
 
 #	these booleans are to check if a rhythm icon has spawned, and if it has, then it will
 #	check whether it was perfectly aligned with the line, or if it was off the line.
@@ -44,6 +49,7 @@ func _input(event):
 #	set the timer to force the user to wait until they can click again.
 func _user_clicked() -> void:
 	if(can_hit):
+		_play_punch()
 		if(perfect_hit):
 			print("perfect")
 			chicken_health -= 3
@@ -101,3 +107,12 @@ func _on_meh_zone_area_exited(area: Area2D) -> void:
 
 func _on_button_pressed() -> void:
 	game_started_testing = true
+
+func _play_punch() -> void:
+	fists1.hide()
+	fists2.show()
+	temp_punch_timer.start(0.1)
+
+func _on_temp_punch_ani_timeout() -> void:
+	fists1.show()
+	fists2.hide()
