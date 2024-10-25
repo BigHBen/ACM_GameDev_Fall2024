@@ -14,6 +14,15 @@ var punch_spawn_scene = preload("res://Scenes/punch_spawn.tscn")
 @onready var fists1 = $PlaceholderFists2
 @onready var fists2 = $PlaceholderPunch
 
+#	temp chicken
+@onready var alive_chicken = $PlaceholderChicken
+@onready var dead_chicken = $PlaceholderDeadChicken
+
+#	audio for punches
+@onready var meh_hit_sfx = $meh_hit_sfx
+@onready var perfect_hit_sfx = $perfect_hit_sfx
+@onready var miss_sfx = $miss_sfx
+
 #	these booleans are to check if a rhythm icon has spawned, and if it has, then it will
 #	check whether it was perfectly aligned with the line, or if it was off the line.
 var is_spawned = false
@@ -33,32 +42,42 @@ var chicken_health = 30
 #	testing the minigame with a boolean
 var game_started_testing = false
 
+func _on_ready() -> void:
+	fists2.hide()
+	dead_chicken.hide()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(game_started_testing && !is_spawned && chicken_health > 0):
 		spawn_hit()
 		is_spawned = true
 		wait_for_next_hit()
+	if(chicken_health <= 0):
+		_replace_chicken()
 
 #	constantly checking if the player has clicked yet anywhere on the viewport
 func _input(event):
 	if(event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT):
-		_user_clicked()
+		if(game_started_testing):
+			_user_clicked()
 
 #	if the player has clicked, then this will check whether it was a miss or not, and then
 #	set the timer to force the user to wait until they can click again.
 func _user_clicked() -> void:
-	if(can_hit):
+	if(can_hit && game_started_testing):
 		_play_punch()
 		if(perfect_hit):
+			perfect_hit_sfx.play()
 			print("perfect")
 			chicken_health -= 3
 			print("chicken health is now: ", chicken_health)
 		else: if(meh_hit):
+			meh_hit_sfx.play()
+			print("meh")
 			chicken_health -= 2
 			print("chicken health is now: ", chicken_health)
-			print("meh")
 		else:
+			miss_sfx.play(0.15)
 			print("miss")
 			print("chicken health is still: ", chicken_health)
 		
@@ -107,6 +126,8 @@ func _on_meh_zone_area_exited(area: Area2D) -> void:
 
 func _on_button_pressed() -> void:
 	game_started_testing = true
+	perfect_hit = false
+	meh_hit = false
 
 func _play_punch() -> void:
 	fists1.hide()
@@ -116,3 +137,7 @@ func _play_punch() -> void:
 func _on_temp_punch_ani_timeout() -> void:
 	fists1.show()
 	fists2.hide()
+
+func _replace_chicken() -> void:
+	alive_chicken.hide()
+	dead_chicken.show()
