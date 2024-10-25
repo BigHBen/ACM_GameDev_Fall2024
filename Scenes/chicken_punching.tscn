@@ -62,9 +62,8 @@ scale = Vector2(0.526, 0.526)
 texture = ExtResource("4_j4f78")
 
 [node name="PlaceholderPunch" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(631, 405)
-scale = Vector2(1.52778, 1.52778)
+position = Vector2(648, 310)
+scale = Vector2(1.33596, 1.37222)
 texture = ExtResource("5_k6qx7")
 
 [node name="Button" type="Button" parent="."]
@@ -74,6 +73,8 @@ offset_right = 1063.0
 offset_bottom = 123.0
 text = "start (testing)"
 
+[node name="temp punch ani" type="Timer" parent="."]
+
 [connection signal="timeout" from="spawn_punch_timer" to="." method="_on_spawn_punch_timer_timeout"]
 [connection signal="area_entered" from="perfect_zone" to="." method="_on_perfect_zone_area_entered"]
 [connection signal="area_exited" from="perfect_zone" to="." method="_on_perfect_zone_area_exited"]
@@ -81,3 +82,4 @@ text = "start (testing)"
 [connection signal="area_exited" from="meh_zone" to="." method="_on_meh_zone_area_exited"]
 [connection signal="timeout" from="can_hit_timer" to="." method="_on_can_hit_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="temp punch ani" to="." method="_on_temp_punch_ani_timeout"]
