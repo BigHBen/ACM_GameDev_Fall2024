@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bij7nxaaomt3e"]
+
+[ext_resource type="Script" path="res://Scenes/slots_hacking_scene_1.gd" id="1_d6evc"]
+
+[sub_resource type="Gradient" id="Gradient_em2tr"]
+offsets = PackedFloat32Array(0.288732, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.458824, 0, 0.623529, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qgo4b"]
+gradient = SubResource("Gradient_em2tr")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_d6evc")
+metadata/_edit_horizontal_guides_ = [0.0]
+metadata/_edit_vertical_guides_ = [429.0]
+
+[node name="Polygon_moving" type="Polygon2D" parent="."]
+position = Vector2(956, 351)
+scale = Vector2(1.15909, 3.27273)
+color = Color(1, 0.352941, 1, 1)
+texture = SubResource("GradientTexture1D_qgo4b")
+polygon = PackedVector2Array(0, 2.75, 77.647, 2.75, 246.745, 2.75, 247, 26, 2, 26, -54.3529, 14.0556)
+
+[node name="Polygon_input" type="Polygon2D" parent="."]
+position = Vector2(499.358, 247.65)
+rotation = -3.14159
+scale = Vector2(2.08242, 3.48652)
+color = Color(1, 0.352941, 1, 1)
+texture = SubResource("GradientTexture1D_qgo4b")
+polygon = PackedVector2Array(2, 4, 78.3505, 4, 247, 4, 247, 15, 247, 26, 2, 26, 34, 15)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 322.0
+offset_top = 499.0
+offset_right = 528.0
+offset_bottom = 564.0
+text = "Click to stop polygon"
+
+[connection signal="pressed" from="Button" to="." method="_on_stop_button_pressed"]
