@@ -9,6 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://d25h2f3i2bdqs" path="res://Audio/cha ching sound effect download.wav" id="7_ktaqx"]
 
 [sub_resource type="FontFile" id="FontFile_r2x5s"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -153,7 +156,6 @@ position = Vector2(830, 380)
 position = Vector2(830, 380)
 stream = ExtResource("7_ktaqx")
 
-[connection signal="get_Bet" from="." to="." method="_on_get_bet"]
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/5_dolar" to="." method="_on_5_dolar_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/10_dollar_bet" to="." method="_on_10_dollar_bet_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/25_dollar_bet" to="." method="_on_25_dollar_bet_pressed"]
