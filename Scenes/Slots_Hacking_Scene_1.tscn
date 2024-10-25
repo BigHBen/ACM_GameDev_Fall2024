@@ -36,4 +36,9 @@ offset_right = 528.0
 offset_bottom = 564.0
 text = "Click to stop polygon"
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.601978, 0.353177, 0.423312, 1)
+polygon = PackedVector2Array(-46, -51, -42, 669, 1243, 665, 1231, -61)
+
 [connection signal="pressed" from="Button" to="." method="_on_stop_button_pressed"]
