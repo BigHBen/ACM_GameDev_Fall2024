@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c81cfuvwk5hyo"
+path="res://.godot/imported/Horse running  sound effect.mp3-ec4a26474eaf0a127b65dd3487be9522.mp3str"
+
+[deps]
+
+source_file="res://Audio/horse_minigame/Horse running  sound effect.mp3"
+dest_files=["res://.godot/imported/Horse running  sound effect.mp3-ec4a26474eaf0a127b65dd3487be9522.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfaxoa3wsgmy6"]
+
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="1_1mjvx"]
+[ext_resource type="Script" path="res://Scripts/horse/horse_race_winnings.gd" id="2_wewfq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ntmq"]
+font = ExtResource("1_1mjvx")
+font_size = 75
+
+[node name="Winnings" type="Label"]
+text = "$"
+label_settings = SubResource("LabelSettings_7ntmq")
+horizontal_alignment = 1
+script = ExtResource("2_wewfq")
+
+[node name="Timer" type="Timer" parent="."]

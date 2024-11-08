@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b2toq3hh1deim"
+path="res://.godot/imported/Horns Trompet Start Of Horse Race Sound - Sound Effect (HD).mp3-9ae89a3a512e9b4b93c3fc12e700c8ed.mp3str"
+
+[deps]
+
+source_file="res://Audio/horse_minigame/Horns Trompet Start Of Horse Race Sound - Sound Effect (HD).mp3"
+dest_files=["res://.godot/imported/Horns Trompet Start Of Horse Race Sound - Sound Effect (HD).mp3-9ae89a3a512e9b4b93c3fc12e700c8ed.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

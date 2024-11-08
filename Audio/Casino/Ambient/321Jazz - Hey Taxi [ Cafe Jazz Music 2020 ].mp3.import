@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmhknr47m7h23"
+path="res://.godot/imported/321Jazz - Hey Taxi [ Cafe Jazz Music 2020 ].mp3-2c3403a9d4ad4827f772e54ae2cfd5d8.mp3str"
+
+[deps]
+
+source_file="res://Audio/Casino/Ambient/321Jazz - Hey Taxi [ Cafe Jazz Music 2020 ].mp3"
+dest_files=["res://.godot/imported/321Jazz - Hey Taxi [ Cafe Jazz Music 2020 ].mp3-2c3403a9d4ad4827f772e54ae2cfd5d8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

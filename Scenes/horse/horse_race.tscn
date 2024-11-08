@@ -1,0 +1,288 @@
+[gd_scene load_steps=25 format=3 uid="uid://dy3ienxyvw720"]
+
+[ext_resource type="Script" path="res://Scripts/horse/horse_race.gd" id="1_gamog"]
+[ext_resource type="Texture2D" uid="uid://bi4djjr3r0274" path="res://Assets/random_photos/horse_racing/dirt.png" id="1_x0sju"]
+[ext_resource type="Script" path="res://Scripts/horse/ground_parallax.gd" id="2_k30sr"]
+[ext_resource type="Texture2D" uid="uid://cvtkcmejfekwt" path="res://Assets/random_photos/horse_racing/horizontal-seamless-pattern-with-clouds/1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg" id="3_qka38"]
+[ext_resource type="Texture2D" uid="uid://bwf3t1jjwms3e" path="res://Assets/random_photos/horse_racing/fence.png" id="4_fts3r"]
+[ext_resource type="Texture2D" uid="uid://w1sdao75fe3g" path="res://Assets/random_photos/horse_racing/grass_PNG109094.png" id="4_i6han"]
+[ext_resource type="PackedScene" uid="uid://do6rw85v72361" path="res://Scenes/horse/horse.tscn" id="8_br0w6"]
+[ext_resource type="PackedScene" uid="uid://dfaxoa3wsgmy6" path="res://Scenes/horse/horse_race_winnings.tscn" id="8_hhb32"]
+[ext_resource type="AudioStream" uid="uid://2d6a8b3uied6" path="res://Audio/horse_minigame/Stadium Crowd Sound Effect.mp3" id="9_onfi1"]
+[ext_resource type="AudioStream" uid="uid://c81cfuvwk5hyo" path="res://Audio/horse_minigame/Horse running  sound effect.mp3" id="10_fvqri"]
+[ext_resource type="AudioStream" uid="uid://b2toq3hh1deim" path="res://Audio/horse_minigame/Horns Trompet Start Of Horse Race Sound - Sound Effect (HD).mp3" id="10_ujukq"]
+[ext_resource type="AudioStream" uid="uid://b3jiux1g71cdp" path="res://Audio/horse_minigame/Whip sound effect.mp3" id="11_3px5i"]
+[ext_resource type="AudioStream" uid="uid://1ffxhyy44atx" path="res://Audio/horse_minigame/Boxing Bell Sound FX.mp3" id="12_a26td"]
+[ext_resource type="AudioStream" uid="uid://dfidk7iw8b4yr" path="res://Audio/horse_minigame/WIN sound effect no copyright.mp3" id="13_tbklw"]
+[ext_resource type="AudioStream" uid="uid://devqy17gkudph" path="res://Audio/horse_minigame/Boo-womp - Sound Effect.mp3" id="15_u3jqq"]
+[ext_resource type="AudioStream" uid="uid://cqev2f6mle13e" path="res://Audio/horse_minigame/Dang! (Kid Meme) - Sound Effect for editing.mp3" id="16_m260b"]
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="31_dmky8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gi1fc"]
+texture = ExtResource("1_x0sju")
+texture_region_size = Vector2i(768, 438)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_okukc"]
+tile_size = Vector2i(768, 438)
+sources/2 = SubResource("TileSetAtlasSource_gi1fc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxl4n"]
+font = ExtResource("31_dmky8")
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_8mnos"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8mqgv"]
+resource_name = "popup"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_be80x"]
+_data = {
+"RESET": SubResource("Animation_8mnos"),
+"popup": SubResource("Animation_8mqgv")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ntmq"]
+font = ExtResource("31_dmky8")
+font_size = 75
+
+[node name="horse_race" type="Node2D"]
+script = ExtResource("1_gamog")
+num_horses = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+script = ExtResource("2_k30sr")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(16, 0)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2880, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(463.75, 96.0001)
+scale = Vector2(0.182952, 0.164571)
+texture = ExtResource("3_qka38")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1423.75, 96.0001)
+scale = Vector2(0.182952, 0.164571)
+texture = ExtResource("3_qka38")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(2383.75, 96.0001)
+scale = Vector2(0.182952, 0.164571)
+texture = ExtResource("3_qka38")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_mirroring = Vector2(2304, 0)
+
+[node name="grass" type="Node2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+
+[node name="GrassPng109094" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/grass"]
+position = Vector2(474, 168)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i6han")
+
+[node name="GrassPng109095" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/grass"]
+position = Vector2(1144, 168)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i6han")
+
+[node name="GrassPng109096" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/grass"]
+position = Vector2(1829, 168)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i6han")
+
+[node name="dirt_track" type="Node2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+
+[node name="TileMap" type="TileMap" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/dirt_track"]
+position = Vector2(0, 212)
+tile_set = SubResource("TileSet_okukc")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 2, 0, 1, 2, 0, 2, 2, 0)
+
+[node name="fences" type="Node2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/fences"]
+position = Vector2(384, 184)
+texture = ExtResource("4_fts3r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/fences"]
+position = Vector2(1152, 184)
+texture = ExtResource("4_fts3r")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer/fences"]
+position = Vector2(1920, 184)
+texture = ExtResource("4_fts3r")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 192.0
+offset_right = 976.0
+offset_bottom = 285.0
+text = "READY"
+label_settings = SubResource("LabelSettings_mxl4n")
+horizontal_alignment = 1
+
+[node name="WinPanel" type="Panel" parent="UI"]
+z_index = 1
+layout_mode = 0
+offset_left = 96.0
+offset_top = 16.0
+offset_right = 1056.0
+offset_bottom = 624.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/WinPanel"]
+libraries = {
+"": SubResource("AnimationLibrary_be80x")
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/WinPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -310.5
+offset_right = 575.0
+offset_bottom = 310.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="UI/WinPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+text = "Winning horse"
+label_settings = SubResource("LabelSettings_7ntmq")
+horizontal_alignment = 1
+
+[node name="Winnings" parent="UI/WinPanel/HBoxContainer" instance=ExtResource("8_hhb32")]
+layout_mode = 2
+
+[node name="Results" type="Label" parent="UI/WinPanel/HBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_7ntmq")
+horizontal_alignment = 1
+
+[node name="Return" type="Label" parent="UI/WinPanel/HBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_7ntmq")
+horizontal_alignment = 1
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="crowd" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("9_onfi1")
+autoplay = true
+
+[node name="galloping" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("10_fvqri")
+
+[node name="whips" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_3px5i")
+
+[node name="win_bell" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("12_a26td")
+
+[node name="win_result" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("13_tbklw")
+
+[node name="start_trumpet" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("10_ujukq")
+
+[node name="lose_result" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("15_u3jqq")
+
+[node name="lose_result2" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("16_m260b")
+
+[node name="zero_score" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("15_u3jqq")
+
+[node name="Horse" parent="." instance=ExtResource("8_br0w6")]
+process_mode = 4
+visible = false
+
+[node name="Start_Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="RaceTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FinishTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="animation_finished" from="UI/WinPanel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Start_Timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="RaceTimer" to="." method="_on_race_timer_timeout"]
+[connection signal="timeout" from="FinishTimer" to="." method="_on_finish_timer_timeout"]

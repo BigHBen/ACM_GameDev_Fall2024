@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3jiux1g71cdp"
+path="res://.godot/imported/Whip sound effect.mp3-773a4e378bdbe2eabb7c1a3e72bda5c3.mp3str"
+
+[deps]
+
+source_file="res://Audio/horse_minigame/Whip sound effect.mp3"
+dest_files=["res://.godot/imported/Whip sound effect.mp3-773a4e378bdbe2eabb7c1a3e72bda5c3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

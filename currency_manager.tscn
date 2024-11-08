@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b55j78y8puf0k"]
+
+[ext_resource type="Script" path="res://currency_manager.gd" id="1_j4owi"]
+
+[node name="CurrencyManager" type="Node2D"]
+script = ExtResource("1_j4owi")

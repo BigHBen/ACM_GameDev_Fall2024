@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhduyq68p0y48"]
+
+[ext_resource type="Texture2D" uid="uid://cfbqbi4gmnjij" path="res://Assets/random_photos/horse_racing/finish_line.png" id="1_2dffk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ieha"]
+size = Vector2(1648, 69.9999)
+
+[node name="FinishLine" type="Area2D"]
+z_index = -1
+position = Vector2(152, 192)
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2dffk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-176, 85)
+shape = SubResource("RectangleShape2D_0ieha")

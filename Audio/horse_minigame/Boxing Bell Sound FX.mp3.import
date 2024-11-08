@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1ffxhyy44atx"
+path="res://.godot/imported/Boxing Bell Sound FX.mp3-f956fc47db247d8f0309f14d4c7382d1.mp3str"
+
+[deps]
+
+source_file="res://Audio/horse_minigame/Boxing Bell Sound FX.mp3"
+dest_files=["res://.godot/imported/Boxing Bell Sound FX.mp3-f956fc47db247d8f0309f14d4c7382d1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
