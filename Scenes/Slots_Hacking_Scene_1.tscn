@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://bij7nxaaomt3e"]
+
+[ext_resource type="Script" path="res://Scenes/slots_hacking_scene_1.gd" id="1_d6evc"]
+
+[sub_resource type="Gradient" id="Gradient_em2tr"]
+offsets = PackedFloat32Array(0.288732, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.458824, 0, 0.623529, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qgo4b"]
+gradient = SubResource("Gradient_em2tr")
+
+[sub_resource type="Animation" id="Animation_orcbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon_moving:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(956, 351)]
+}
+
+[sub_resource type="Animation" id="Animation_ml5y0"]
+resource_name = "moving_block"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon_moving:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(956, 351), Vector2(956, 13)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6akm"]
+_data = {
+"RESET": SubResource("Animation_orcbv"),
+"moving_block": SubResource("Animation_ml5y0")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_5r31n"]
+resource_local_to_scene = true
+font_size = 75
+font_color = Color(0.517647, 0.635294, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_05hj5"]
+font_size = 75
+font_color = Color(0.517647, 0.635294, 1, 1)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_d6evc")
+metadata/_edit_horizontal_guides_ = [0.0]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -1
+z_as_relative = false
+color = Color(0.601978, 0.353177, 0.423312, 1)
+polygon = PackedVector2Array(-46, -51, -42, 669, 1243, 665, 1231, -61)
+
+[node name="Polygon_moving" type="Polygon2D" parent="."]
+position = Vector2(956, 351)
+scale = Vector2(1.15909, 3.27273)
+color = Color(1, 0.352941, 1, 1)
+texture = SubResource("GradientTexture1D_qgo4b")
+polygon = PackedVector2Array(0, 2.75, 77.647, 2.75, 246.745, 2.75, 247, 26, 2, 26, -54.3529, 14.0556)
+
+[node name="Polygon_input" type="Polygon2D" parent="."]
+position = Vector2(499.358, 247.65)
+rotation = -3.14159
+scale = Vector2(2.08242, 3.48652)
+color = Color(1, 0.352941, 1, 1)
+texture = SubResource("GradientTexture1D_qgo4b")
+polygon = PackedVector2Array(2, 4, 78.3505, 4, 247, 4, 247, 15, 247, 26, 2, 26, 34, 15)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x6akm")
+}
+
+[node name="stop_Button" type="Button" parent="."]
+offset_left = 322.0
+offset_top = 499.0
+offset_right = 528.0
+offset_bottom = 564.0
+text = "Click to stop polygon"
+
+[node name="win_Label" type="Label" parent="."]
+visible = false
+offset_left = 218.0
+offset_top = 179.0
+offset_right = 923.0
+offset_bottom = 388.0
+text = "       YOU WIN!!
+You get 2X your bet"
+label_settings = SubResource("LabelSettings_5r31n")
+
+[node name="lose_label" type="Label" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 139.0
+offset_top = 134.0
+offset_right = 964.0
+offset_bottom = 343.0
+text = "		         YOU LOSE
+You lose all of your bet"
+label_settings = SubResource("LabelSettings_05hj5")
+
+[connection signal="pressed" from="stop_Button" to="." method="_on_stop_button_pressed"]

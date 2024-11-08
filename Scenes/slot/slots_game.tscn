@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://udu8c42r8lj" path="res://Assets/random_photos/Slots_Machine.png" id="2_cfer3"]
 [ext_resource type="PackedScene" uid="uid://uoljc0ahxvy1" path="res://Scenes/timer_bar.tscn" id="2_wd8h2"]
 [ext_resource type="Texture2D" uid="uid://cjd3ff31vy68i" path="res://Assets/random_photos/seven.png" id="3_uf1h0"]
+[ext_resource type="Texture2D" uid="uid://ulwc1gw0yjwr" path="res://Assets/random_photos/stock_background.jpg" id="5_o4nq3"]
 
 [node name="Slots_Game" type="Node2D"]
 script = ExtResource("1_vdhey")
@@ -36,6 +37,8 @@ offset_bottom = -1517.4
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_right = 3.00195
+offset_bottom = 184.0
 grow_horizontal = 2
 
 [node name="Results" type="Node" parent="Control/Panel/HBoxContainer"]
@@ -78,5 +81,16 @@ text = "Play Again"
 position = Vector2(571, 311)
 scale = Vector2(1.38262, 1.17088)
 texture = ExtResource("2_cfer3")
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(579.5, 328)
+scale = Vector2(2.16852, 1.87222)
+texture = ExtResource("5_o4nq3")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0, 0.926264, 0.666158, 1)
+polygon = PackedVector2Array(348, 223, 349, 405, 433, 409, 432, 491, 680, 490, 679, 409, 770, 407, 771, 207, 345, 206)
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_Replay_pressed"]

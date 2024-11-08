@@ -2,6 +2,8 @@ extends Node2D
 
 var bet_amount = 0 : set = _set_bet, get = _get_bet
 var casino ="res://Scenes/casino.tscn"
+var scenes = ["res://Scenes/slots_game.tscn",
+			  "res://Scenes/Slots_Hacking_Scene_1.tscn"]
 var coin_scene = preload("res://Scenes/bet_stack_coin.tscn")  # replace with your coin scene path
 var spawn_position = Vector2(830, 380)  # adjust initial spawn position
 var spawned_coins = []
@@ -65,5 +67,9 @@ func _on_25_dollar_bet_pressed() -> void:
 		bet_amount+=25
 
 func _on_slots_game_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/slot/slots_game.tscn")
+	var sceneChange = randi_range(0,99)
+	if(sceneChange < 80):
+		get_tree().change_scene_to_file(scenes[0])
+	else:
+		get_tree().change_scene_to_file(scenes[1])
 	
