@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c03n1oq28p0j0"]
+[gd_scene load_steps=6 format=3 uid="uid://c03n1oq28p0j0"]
 
 [ext_resource type="Script" path="res://Scripts/slots/slots_game.gd" id="1_vdhey"]
 [ext_resource type="PackedScene" uid="uid://dl20ptmkwt040" path="res://Scenes/slot/slot_animation.tscn" id="2_arwdp"]
 [ext_resource type="Texture2D" uid="uid://udu8c42r8lj" path="res://Assets/random_photos/Slots_Machine.png" id="2_cfer3"]
+[ext_resource type="PackedScene" uid="uid://uoljc0ahxvy1" path="res://Scenes/timer_bar.tscn" id="2_wd8h2"]
 [ext_resource type="Texture2D" uid="uid://cjd3ff31vy68i" path="res://Assets/random_photos/seven.png" id="3_uf1h0"]
 
 [node name="Slots_Game" type="Node2D"]
@@ -15,6 +16,9 @@ offset_left = 354.0
 offset_top = 222.0
 offset_right = 778.0
 offset_bottom = 488.0
+
+[node name="TimerBar" parent="Control" instance=ExtResource("2_wd8h2")]
+layout_mode = 1
 
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1

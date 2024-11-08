@@ -1,0 +1,300 @@
+[gd_scene load_steps=53 format=3 uid="uid://uoljc0ahxvy1"]
+
+[ext_resource type="Script" path="res://Scripts/timer_bar.gd" id="1_et8jq"]
+[ext_resource type="Texture2D" uid="uid://dpywwm3p60880" path="res://Assets/Packs/HUD_Swirl/Aligned/HUD_Swirl_A_Mid_hp.png" id="1_qyk75"]
+[ext_resource type="Texture2D" uid="uid://bnyw6a7mq0jda" path="res://Assets/Animations/Casino/background-remover/frame_00_delay-0.06s.png" id="2_7bnqd"]
+[ext_resource type="Texture2D" uid="uid://bcmg6xxd8vc4p" path="res://Assets/Animations/Casino/background-remover/frame_01_delay-0.06s.png" id="3_sh5k6"]
+[ext_resource type="Texture2D" uid="uid://bnf22hs6cvlff" path="res://Assets/Animations/Casino/clock_flame2/frame_0_delay-0.1s.png" id="3_xp2xh"]
+[ext_resource type="Texture2D" uid="uid://b6b8y7q64fexn" path="res://Assets/Animations/Casino/background-remover/frame_02_delay-0.06s.png" id="4_37rfc"]
+[ext_resource type="Texture2D" uid="uid://ca8f0ayos7hhb" path="res://Assets/Animations/Casino/clock_flame2/frame_1_delay-0.1s.png" id="4_g4sog"]
+[ext_resource type="Texture2D" uid="uid://3tp7pf1ud15v" path="res://Assets/Animations/Casino/background-remover/frame_03_delay-0.06s.png" id="5_20ysu"]
+[ext_resource type="Texture2D" uid="uid://c3li4av28kw6t" path="res://Assets/Animations/Casino/clock_flame2/frame_2_delay-0.1s.png" id="5_ys5h1"]
+[ext_resource type="Texture2D" uid="uid://blb6mlp2jo5pf" path="res://Assets/Animations/Casino/background-remover/frame_04_delay-0.06s.png" id="6_00kaw"]
+[ext_resource type="Texture2D" uid="uid://d4ahl8nytredc" path="res://Assets/Animations/Casino/clock_flame2/frame_3_delay-0.1s.png" id="6_f5wgr"]
+[ext_resource type="Texture2D" uid="uid://dykgipvabmtmf" path="res://Assets/Animations/Casino/background-remover/frame_05_delay-0.06s.png" id="7_23caj"]
+[ext_resource type="Texture2D" uid="uid://b7hupgxiqlqka" path="res://Assets/Animations/Casino/background-remover/frame_06_delay-0.06s.png" id="8_eis42"]
+[ext_resource type="Texture2D" uid="uid://d3dja6mjvwu51" path="res://Assets/Animations/Casino/background-remover/frame_07_delay-0.06s.png" id="9_8tvid"]
+[ext_resource type="Texture2D" uid="uid://q2psh3mi6gjq" path="res://Assets/Animations/Casino/background-remover/frame_08_delay-0.06s.png" id="10_f6c0u"]
+[ext_resource type="Texture2D" uid="uid://dq3j2e3ongdcx" path="res://Assets/Animations/Casino/background-remover/frame_09_delay-0.06s.png" id="11_axkqi"]
+[ext_resource type="Texture2D" uid="uid://cflxwkko7nldv" path="res://Assets/Animations/Casino/background-remover/frame_10_delay-0.06s.png" id="12_yw55f"]
+[ext_resource type="Texture2D" uid="uid://b2fil7xk7bncs" path="res://Assets/Animations/Casino/background-remover/frame_11_delay-0.06s.png" id="13_i4j2l"]
+[ext_resource type="Texture2D" uid="uid://koum6kvwjgpu" path="res://Assets/Animations/Casino/background-remover/frame_12_delay-0.06s.png" id="14_i3roq"]
+[ext_resource type="Texture2D" uid="uid://dnsg1dbhltlqx" path="res://Assets/Animations/Casino/background-remover/frame_13_delay-0.06s.png" id="15_kbefq"]
+[ext_resource type="Texture2D" uid="uid://bgcsb4gql3rph" path="res://Assets/Animations/Casino/background-remover/frame_14_delay-0.06s.png" id="16_l33x3"]
+[ext_resource type="Texture2D" uid="uid://dt4efn8ywxo2l" path="res://Assets/Animations/Casino/background-remover/frame_15_delay-0.06s.png" id="17_4k32w"]
+[ext_resource type="Texture2D" uid="uid://dfl6jnhb0igc3" path="res://Assets/Animations/Casino/background-remover/frame_16_delay-0.06s.png" id="18_u5gi1"]
+[ext_resource type="Texture2D" uid="uid://bn7bms71xj578" path="res://Assets/Animations/Casino/background-remover/frame_17_delay-0.06s.png" id="19_lk0hw"]
+[ext_resource type="Texture2D" uid="uid://d2sk6udx06xxq" path="res://Assets/Animations/Casino/background-remover/frame_18_delay-0.06s.png" id="20_7jfh3"]
+[ext_resource type="Texture2D" uid="uid://drmw1t4ga730k" path="res://Assets/Animations/Casino/background-remover/frame_19_delay-0.06s.png" id="21_sq4fs"]
+[ext_resource type="Texture2D" uid="uid://dp7dskyxjmlds" path="res://Assets/Animations/Casino/background-remover/frame_20_delay-0.06s.png" id="22_um7io"]
+[ext_resource type="Texture2D" uid="uid://b46i0o6mj37aq" path="res://Assets/Animations/Casino/background-remover/frame_21_delay-0.06s.png" id="23_g0k3g"]
+[ext_resource type="Texture2D" uid="uid://brp5hgfdcd8x7" path="res://Assets/Animations/Casino/background-remover/frame_22_delay-0.06s.png" id="24_syfmk"]
+[ext_resource type="Texture2D" uid="uid://br6qch16n5ks1" path="res://Assets/Animations/Casino/background-remover/frame_23_delay-0.06s.png" id="25_rj708"]
+[ext_resource type="Texture2D" uid="uid://bqtmyncllr1h" path="res://Assets/Animations/Casino/background-remover/frame_24_delay-0.06s.png" id="26_l7epp"]
+[ext_resource type="Texture2D" uid="uid://dd7akfjp01t8a" path="res://Assets/Animations/Casino/background-remover/frame_25_delay-0.06s.png" id="27_kyabv"]
+[ext_resource type="Texture2D" uid="uid://dbq61qx8qbacv" path="res://Assets/Animations/Casino/background-remover/frame_26_delay-0.06s.png" id="28_3jfau"]
+[ext_resource type="Texture2D" uid="uid://cuyj83r7i4mmq" path="res://Assets/Animations/Casino/background-remover/frame_27_delay-0.06s.png" id="29_msq04"]
+[ext_resource type="Texture2D" uid="uid://deln86ljlmy5p" path="res://Assets/Animations/Casino/background-remover/frame_28_delay-0.06s.png" id="30_sgura"]
+[ext_resource type="Texture2D" uid="uid://b2we07hcf5ohf" path="res://Assets/Animations/Casino/background-remover/frame_29_delay-0.06s.png" id="31_hieq4"]
+[ext_resource type="Texture2D" uid="uid://beytb3kscldtb" path="res://Assets/Animations/Casino/background-remover/frame_30_delay-0.06s.png" id="32_0vuno"]
+[ext_resource type="Texture2D" uid="uid://hn67pwn7kth4" path="res://Assets/Animations/Casino/background-remover/frame_31_delay-0.06s.png" id="33_fg07m"]
+[ext_resource type="Texture2D" uid="uid://mq6t587d5m84" path="res://Assets/Animations/Casino/background-remover/frame_32_delay-0.06s.png" id="34_30krh"]
+[ext_resource type="Texture2D" uid="uid://bv64q3osf220a" path="res://Assets/Animations/Casino/background-remover/frame_33_delay-0.06s.png" id="35_qjfer"]
+[ext_resource type="Texture2D" uid="uid://c2e3udaaifhp7" path="res://Assets/Animations/Casino/background-remover/frame_34_delay-0.06s.png" id="36_scbdr"]
+[ext_resource type="Texture2D" uid="uid://bhkewucf2a5h0" path="res://Assets/Animations/Casino/background-remover/frame_35_delay-0.06s.png" id="37_wite8"]
+[ext_resource type="Texture2D" uid="uid://be2u2pxvfxt2t" path="res://Assets/Animations/Casino/background-remover/frame_36_delay-0.06s.png" id="38_i4vgm"]
+[ext_resource type="Texture2D" uid="uid://cvq8nl6ihc6ji" path="res://Assets/Animations/Casino/background-remover/frame_37_delay-0.06s.png" id="39_2ehu1"]
+[ext_resource type="Texture2D" uid="uid://bdsrec47hf64r" path="res://Assets/Packs/HUD_Swirl/Edited/HUD_Swirl_I_Mid-Health0000.png" id="40_f2w7t"]
+[ext_resource type="Texture2D" uid="uid://bx642jsc7c1m6" path="res://Assets/Packs/HUD_Swirl/Edited/HUD_Swirl_I_Mid-Health0001.png" id="41_e1g0e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oa7fr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xp2xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g4sog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ys5h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f5wgr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ljbhf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7bnqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sh5k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_37rfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_20ysu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_00kaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_23caj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_eis42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8tvid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_f6c0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_axkqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yw55f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i4j2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_i3roq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kbefq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l33x3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4k32w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_u5gi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_lk0hw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7jfh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_sq4fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_um7io")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_g0k3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_syfmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rj708")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_l7epp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kyabv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_3jfau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_msq04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_sgura")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hieq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_0vuno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_fg07m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_30krh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_qjfer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_scbdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_wite8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_i4vgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_2ehu1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_s4k5s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:tint_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4yc0p"]
+resource_name = "run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eqh20"]
+resource_name = "switch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.903, 0.455, 0.446, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yab21"]
+_data = {
+"RESET": SubResource("Animation_s4k5s"),
+"run": SubResource("Animation_4yc0p"),
+"switch": SubResource("Animation_eqh20")
+}
+
+[node name="TimerBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_et8jq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+offset_left = -590.0
+offset_top = -176.0
+offset_right = 596.0
+offset_bottom = 180.0
+texture = ExtResource("1_qyk75")
+expand_mode = 1
+flip_h = true
+
+[node name="flame" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(86, -17)
+scale = Vector2(0.570282, 0.632083)
+sprite_frames = SubResource("SpriteFrames_oa7fr")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+step = 0.0
+value = 100.0
+texture_under = ExtResource("40_f2w7t")
+texture_progress = ExtResource("41_e1g0e")
+
+[node name="Timerclock" type="AnimatedSprite2D" parent="TextureProgressBar"]
+position = Vector2(79, 86)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_ljbhf")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureProgressBar/Timerclock"]
+libraries = {
+"": SubResource("AnimationLibrary_yab21")
+}

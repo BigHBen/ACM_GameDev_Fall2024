@@ -19,6 +19,8 @@ config/icon="res://Icon/casino-chip.png"
 
 MinigameManager="*res://minigame_manager.tscn"
 CurrencyManager="*res://currency_manager.tscn"
+CasinoTimer="*res://Scenes/casino_timer.tscn"
+TimerBar="*res://Scenes/timer_bar.tscn"
 
 [display]
 

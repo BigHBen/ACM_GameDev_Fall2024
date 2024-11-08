@@ -14,6 +14,7 @@ var race_started = false
 
 @onready var minigame_manager = get_node("/root/MinigameManager")
 
+
 #instance for finish line sprite
 var finish_line
 
@@ -21,7 +22,6 @@ const finish_line_SCENE = preload("res://Scenes/horse/finish_line.tscn")  # Repl
 const SPAWN_POSITION = Vector2(2396, 1260)  # Initial spawn position
 
 #Horses
-
 var your_bet #From minigame_manager
 var horses_info #From minigame_manager
 
@@ -32,6 +32,7 @@ var horses = []
 @export var num_horses = 5
 
 #End conditions
+var WIN_AMOUNT : int = 0# Changes player balance
 var winners = []
 var win = false #Correct bet
 signal start_race()
@@ -186,23 +187,40 @@ func _on_finish_timer_timeout() -> void:
 		#print("1st place: %s \n2nd place: %s \n3rd place: %s" % [winners[0],winners[1], winners[2]])
 		pass
 	return_label.text = "Returning to casino (0)...."
+	minigame_manager.minigame_count += 1
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file(casino)
 
 func score_announced():
 	pass
 
+#After win screen pops up -> Determine win/lose amounts
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "popup":
 		$UI/WinPanel/HBoxContainer/Winnings.score_announced.connect(score_announced)
 		if your_bet:
+			
+			
+			
+			
 			if win:
+				
+				#Will be passed to minigame manager -> Added to player balance
+				WIN_AMOUNT = your_bet["amount"]
+				
 				$UI/WinPanel/HBoxContainer/Winnings.start_effect(your_bet["amount"])
 				$Audio/win_result.play()
 			else:
-				$UI/WinPanel/HBoxContainer/Winnings.start_effect(-(your_bet["amount"]))
+				
+				#Will be passed to minigame manager -> Added to player balance
+				WIN_AMOUNT = -your_bet["amount"]
+				
+				$UI/WinPanel/HBoxContainer/Winnings.start_effect(-your_bet["amount"])
 				$Audio/lose_result.play()
 				await get_tree().create_timer(1.25).timeout
 				$Audio/lose_result2.play()
+			
+			minigame_manager.set_winning_bet(WIN_AMOUNT)
+			
 		else:
 			$UI/WinPanel/HBoxContainer/Winnings.start_effect(0)

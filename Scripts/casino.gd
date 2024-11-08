@@ -5,8 +5,14 @@ extends Node2D
 var minigames =  {
 	horse_minigame = "res://Scenes/horse/horse_race_menu.tscn", #Minigame select scene
 	slots_minigame = "res://Scenes/slot/slots_menu.tscn",
-	chicken_minigame = "res://Scenes/chicken_fight/chicken_punching.tscn"
+	chicken_minigame = "res://Scenes/chicken_fight/chicken_punching.tscn",
+	hub = "res://Scenes/hub.tscn"
 	}
+
+#Timer
+@onready var timer_bar = get_node("/root/TimerBar")
+@onready var casino_timer = get_node("/root/CasinoTimer")
+@onready var minigame_manager = get_node("/root/MinigameManager")
 
 #Audio variables
 @onready var background_music = $Audio/Background/casino_jazz
@@ -17,12 +23,14 @@ func _ready() -> void:
 	background_music.volume_db = -25.0
 	backgronud_crowd.volume_db = -25.0
 	background_music.play(46)
+	print("Money earned from minigames: $%s" % [minigame_manager.get_winning_bet()])
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if casino_timer.is_stopped():
+		get_tree().change_scene_to_file(minigames["hub"])
 
 
 func _on_horse_minigame_pressed() -> void:

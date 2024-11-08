@@ -3,6 +3,7 @@ extends Node2D
 #Main Variables - 
 var current_scene = null
 var winning_bet = 0 : set = set_winning_bet, get = get_winning_bet
+var minigame_count : int = 0
 
 func _ready():
 	var root = get_tree().root

@@ -1,13 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://dy3ienxyvw720"]
+[gd_scene load_steps=26 format=3 uid="uid://dy3ienxyvw720"]
 
 [ext_resource type="Script" path="res://Scripts/horse/horse_race.gd" id="1_gamog"]
 [ext_resource type="Texture2D" uid="uid://bi4djjr3r0274" path="res://Assets/random_photos/horse_racing/dirt.png" id="1_x0sju"]
+[ext_resource type="PackedScene" uid="uid://uoljc0ahxvy1" path="res://Scenes/timer_bar.tscn" id="2_37f0h"]
 [ext_resource type="Script" path="res://Scripts/horse/ground_parallax.gd" id="2_k30sr"]
 [ext_resource type="Texture2D" uid="uid://cvtkcmejfekwt" path="res://Assets/random_photos/horse_racing/horizontal-seamless-pattern-with-clouds/1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg" id="3_qka38"]
 [ext_resource type="Texture2D" uid="uid://bwf3t1jjwms3e" path="res://Assets/random_photos/horse_racing/fence.png" id="4_fts3r"]
 [ext_resource type="Texture2D" uid="uid://w1sdao75fe3g" path="res://Assets/random_photos/horse_racing/grass_PNG109094.png" id="4_i6han"]
 [ext_resource type="PackedScene" uid="uid://do6rw85v72361" path="res://Scenes/horse/horse.tscn" id="8_br0w6"]
 [ext_resource type="PackedScene" uid="uid://dfaxoa3wsgmy6" path="res://Scenes/horse/horse_race_winnings.tscn" id="8_hhb32"]
+[ext_resource type="Animation" uid="uid://bqhlxoy7hkgra" path="res://Assets/Animations/Menu/popup.res" id="8_ka7e6"]
 [ext_resource type="AudioStream" uid="uid://2d6a8b3uied6" path="res://Audio/horse_minigame/Stadium Crowd Sound Effect.mp3" id="9_onfi1"]
 [ext_resource type="AudioStream" uid="uid://c81cfuvwk5hyo" path="res://Audio/horse_minigame/Horse running  sound effect.mp3" id="10_fvqri"]
 [ext_resource type="AudioStream" uid="uid://b2toq3hh1deim" path="res://Audio/horse_minigame/Horns Trompet Start Of Horse Race Sound - Sound Effect (HD).mp3" id="10_ujukq"]
@@ -59,38 +61,10 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_8mqgv"]
-resource_name = "popup"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_be80x"]
 _data = {
 "RESET": SubResource("Animation_8mnos"),
-"popup": SubResource("Animation_8mqgv")
+"popup": ExtResource("8_ka7e6")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ntmq"]
@@ -174,6 +148,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TimerBar" parent="UI" instance=ExtResource("2_37f0h")]
+layout_mode = 1
 
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 0

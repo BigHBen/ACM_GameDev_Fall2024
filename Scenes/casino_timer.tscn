@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://v1edvxst6dio"]
+[gd_scene load_steps=3 format=3 uid="uid://v1edvxst6dio"]
 
 [ext_resource type="Script" path="res://Scripts/casino_timer.gd" id="1_ylown"]
+[ext_resource type="AudioStream" uid="uid://cnnm54jx6q2t8" path="res://Audio/Classic Alarm Clock - Sound Effect  ProSounds.mp3" id="2_afe37"]
 
 [node name="Casino_Timer" type="Timer"]
-wait_time = 120.0
 script = ExtResource("1_ylown")
+
+[node name="alarm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_afe37")
 
 [connection signal="timeout" from="." to="." method="_on_timeout"]
