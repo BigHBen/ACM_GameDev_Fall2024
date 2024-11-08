@@ -1,6 +1,10 @@
+<<<<<<< Updated upstream:Scenes/hit_line.tscn
 [gd_scene load_steps=3 format=3 uid="uid://crytl4cv413uq"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://byecl0bhacnpv"]
+>>>>>>> Stashed changes:Scenes/chicken_fight/hit_line.tscn
 
-[ext_resource type="Texture2D" uid="uid://d3vjrmof5lkta" path="res://Assets/random_photos/hit_line.png" id="1_ocp35"]
+[ext_resource type="Texture2D" uid="uid://baiorjmrw05gi" path="res://Assets/chicken_fighting_assets/hit_circle.png" id="1_hbqco"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcrty"]
 size = Vector2(100, 15)
@@ -8,7 +12,9 @@ size = Vector2(100, 15)
 [node name="hit_line" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ocp35")
+position = Vector2(-6.10352e-05, 6.10352e-05)
+scale = Vector2(0.287, 0.287)
+texture = ExtResource("1_hbqco")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)

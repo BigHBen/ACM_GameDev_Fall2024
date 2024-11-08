@@ -1,29 +1,25 @@
+<<<<<<< Updated upstream:Scenes/punch_spawn.tscn
 [gd_scene load_steps=4 format=3 uid="uid://dh1jrny6htp1j"]
 
 [ext_resource type="Texture2D" uid="uid://d3l4a68wye4c7" path="res://Assets/random_photos/punch_icon.webp" id="1_5cfuo"]
 [ext_resource type="Script" path="res://Scripts/punch_spawn.gd" id="1_b35mr"]
+=======
+[gd_scene load_steps=4 format=3 uid="uid://cijjwt0f3sev"]
+
+[ext_resource type="Script" path="res://Scripts/chicken_fight/punch_spawn.gd" id="1_tmmop"]
+[ext_resource type="Texture2D" uid="uid://dsnsfaiye78rn" path="res://Assets/chicken_fighting_assets/punch_icon.png" id="1_xvpqy"]
+>>>>>>> Stashed changes:Scenes/chicken_fight/punch_spawn.tscn
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sufvp"]
 size = Vector2(120, 0)
 
 [node name="punch_spawn" type="Area2D"]
-script = ExtResource("1_b35mr")
+script = ExtResource("1_tmmop")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.84217e-14, -3.00927e-36)
-scale = Vector2(0.214844, 0.214844)
-texture = ExtResource("1_5cfuo")
+scale = Vector2(0.130711, 0.130711)
+texture = ExtResource("1_xvpqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_sufvp")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -91.0
-offset_top = -25.0
-offset_right = 99.0
-offset_bottom = 17.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "---                ---"
