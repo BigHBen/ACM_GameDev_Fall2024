@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn60at1v5yv2g"]
+
+[ext_resource type="Script" path="res://Scripts/chicken_punching.gd" id="1_w2ihy"]
+[ext_resource type="PackedScene" uid="uid://cjoarybbdodvg" path="res://Scenes/chicken_fight/punch_spawn.tscn" id="2_6ewom"]
+[ext_resource type="Texture2D" uid="uid://cdwmxoxnr6xb6" path="res://Assets/random_photos/placeholder_fists.png" id="3_wbab7"]
+[ext_resource type="Texture2D" uid="uid://nlpuxfwlb1p" path="res://Assets/random_photos/placeholder_chicken.png" id="4_j4f78"]
+[ext_resource type="Texture2D" uid="uid://d27x67bbeg8j4" path="res://Assets/random_photos/placeholder_punch.png" id="5_k6qx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a65t"]
+size = Vector2(228, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnn6s"]
+size = Vector2(227.5, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csiec"]
+size = Vector2(227, 17.5)
+
+[node name="chicken_punching" type="Node2D"]
+script = ExtResource("1_w2ihy")
+
+[node name="TimerBar" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
+
+[node name="spawn_punch_timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="punch_spawn" parent="." instance=ExtResource("2_6ewom")]
+visible = false
+position = Vector2(-125, 96)
+script = null
+
+[node name="punch_spawn2" parent="." instance=ExtResource("2_6ewom")]
+visible = false
+script = null
+
+[node name="perfect_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="perfect_zone"]
+position = Vector2(303, 367.5)
+shape = SubResource("RectangleShape2D_8a65t")
+
+[node name="meh_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="meh_zone"]
+position = Vector2(303, 352)
+shape = SubResource("RectangleShape2D_tnn6s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="meh_zone"]
+position = Vector2(303, 384.25)
+shape = SubResource("RectangleShape2D_csiec")
+
+[node name="can_hit_timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 185.0
+offset_top = 355.0
+offset_right = 507.0
+offset_bottom = 378.0
+text = "-----------------------------------------------      <- hit here"
+
+[node name="PlaceholderFists2" type="Sprite2D" parent="."]
+position = Vector2(688, 490)
+scale = Vector2(2.52035, 2.52035)
+texture = ExtResource("3_wbab7")
+
+[node name="PlaceholderChicken" type="Sprite2D" parent="."]
+position = Vector2(638, 273)
+scale = Vector2(0.526, 0.526)
+texture = ExtResource("4_j4f78")
+
+[node name="PlaceholderPunch" type="Sprite2D" parent="."]
+position = Vector2(648, 310)
+scale = Vector2(1.33596, 1.37222)
+texture = ExtResource("5_k6qx7")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 927.0
+offset_top = 96.0
+offset_right = 1063.0
+offset_bottom = 123.0
+text = "start (testing)"
+
+[node name="temp punch ani" type="Timer" parent="."]
+
+[connection signal="timeout" from="spawn_punch_timer" to="." method="_on_spawn_punch_timer_timeout"]
+[connection signal="area_entered" from="perfect_zone" to="." method="_on_perfect_zone_area_entered"]
+[connection signal="area_exited" from="perfect_zone" to="." method="_on_perfect_zone_area_exited"]
+[connection signal="area_entered" from="meh_zone" to="." method="_on_meh_zone_area_entered"]
+[connection signal="area_exited" from="meh_zone" to="." method="_on_meh_zone_area_exited"]
+[connection signal="timeout" from="can_hit_timer" to="." method="_on_can_hit_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="temp punch ani" to="." method="_on_temp_punch_ani_timeout"]

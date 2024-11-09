@@ -2,7 +2,7 @@ extends Node2D
 
 #	this variable loads the scene and hitbox for the rhythm icon, so instances can be made
 #	of it.
-var punch_spawn_scene = preload("res://Scenes/punch_spawn.tscn")
+var punch_spawn_scene = preload("res://Scenes/chicken_fight/punch_spawn.tscn")
 
 #	these two timers are necessary so that the rhythm icons aren't impossible to hit, and
 #	so that a player cannot just spam click the button to win the minigame.

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy5deret27xq6"]
+
+[ext_resource type="Texture2D" uid="uid://baiorjmrw05gi" path="res://Assets/chicken_fighting_assets/hit_circle.png" id="1_hbqco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcrty"]
+size = Vector2(100, 15)
+
+[node name="hit_line" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6.10352e-05, 6.10352e-05)
+scale = Vector2(0.287, 0.287)
+texture = ExtResource("1_hbqco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_jcrty")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
