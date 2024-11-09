@@ -3,6 +3,15 @@
 [ext_resource type="Script" path="res://Scripts/casino.gd" id="1_2k6it"]
 [ext_resource type="Texture2D" uid="uid://bcrsq7ommq5pu" path="res://Assets/random_photos/abstract-blur-defocused-hotel-lobby-600nw-2340724233.webp" id="1_xye6o"]
 [ext_resource type="Texture2D" uid="uid://df83khsg3ugbw" path="res://Assets/random_photos/pngegg.png" id="3_w23f4"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="Texture2D" uid="uid://hv25jht77dxo" path="res://Assets/random_photos/Slots-Image.png" id="4_ww15t"]
+[ext_resource type="Texture2D" uid="uid://bj4didv6i2ruu" path="res://Assets/random_photos/Ckucky-Boxer-Artwork_Red_Web.webp" id="5_a66yx"]
+[ext_resource type="AudioStream" uid="uid://cmhknr47m7h23" path="res://Audio/Casino/Ambient/321Jazz - Hey Taxi [ Cafe Jazz Music 2020 ].mp3" id="6_53raj"]
+[ext_resource type="AudioStream" uid="uid://bqhk41ptyrw6v" path="res://Audio/Casino/Ambient/Sound Effect - Crowd - Talking outside.mp3" id="6_kgahp"]
+[ext_resource type="Script" path="res://Scripts/casino_camera.gd" id="8_atk4w"]
+[ext_resource type="PackedScene" path="res://Scenes/timer_bar.tscn" id="9_ci4e6"]
+>>>>>>> Stashed changes
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vb80"]
 bg_color = Color(0, 0.0435884, 0.154745, 0.956863)

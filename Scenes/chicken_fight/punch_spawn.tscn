@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjoarybbdodvg"]
+
+[ext_resource type="Script" path="res://Scripts/punch_spawn.gd" id="1_tmmop"]
+[ext_resource type="Texture2D" uid="uid://dsnsfaiye78rn" path="res://Assets/chicken_fighting_assets/punch_icon.png" id="1_xvpqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sufvp"]
+size = Vector2(120, 0)
+
+[node name="punch_spawn" type="Area2D"]
+script = ExtResource("1_tmmop")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.130711, 0.130711)
+texture = ExtResource("1_xvpqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_sufvp")

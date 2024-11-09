@@ -4,7 +4,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://byecl0bhacnpv"]
 >>>>>>> Stashed changes:Scenes/chicken_fight/hit_line.tscn
 
+<<<<<<< Updated upstream:Scenes/hit_line.tscn
 [ext_resource type="Texture2D" uid="uid://baiorjmrw05gi" path="res://Assets/chicken_fighting_assets/hit_circle.png" id="1_hbqco"]
+=======
+[ext_resource type="Texture2D" path="res://Assets/chicken_fighting_assets/hit_circle.png" id="1_hbqco"]
+>>>>>>> Stashed changes:Scenes/chicken_fight/hit_line.tscn
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcrty"]
 size = Vector2(100, 15)
