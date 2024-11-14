@@ -3,7 +3,7 @@ extends Node2D
 #creates variable for animation player
 @onready var AP = $AnimationPlayer
 var Xposition = 956
-
+var speed = 1000
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	 #when this part starts, the right block will move
@@ -13,13 +13,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		_on_stop_button_pressed()
 func _on_stop_button_pressed() -> void:
 	#stops up and down animation
 	AP.stop(true)
 	#moves moving block over to the input block
 	while(Xposition >= 492):
-		Xposition = Xposition - 1;
+		Xposition = Xposition - speed;
 		$Polygon_moving.position.x = Xposition;
 		await get_tree().create_timer(.0001).timeout
 	#Checks to see if within area in terms of Y axis

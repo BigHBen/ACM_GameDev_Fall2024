@@ -1,8 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://dy3ienxyvw720"]
+[gd_scene load_steps=25 format=3 uid="uid://dy3ienxyvw720"]
 
 [ext_resource type="Script" path="res://Scripts/horse/horse_race.gd" id="1_gamog"]
 [ext_resource type="Texture2D" uid="uid://bi4djjr3r0274" path="res://Assets/random_photos/horse_racing/dirt.png" id="1_x0sju"]
-[ext_resource type="PackedScene" uid="uid://uoljc0ahxvy1" path="res://Scenes/timer_bar.tscn" id="2_37f0h"]
 [ext_resource type="Script" path="res://Scripts/horse/ground_parallax.gd" id="2_k30sr"]
 [ext_resource type="Texture2D" uid="uid://cvtkcmejfekwt" path="res://Assets/random_photos/horse_racing/horizontal-seamless-pattern-with-clouds/1610.m00.i125.n015.S.c12.310635362 Vector cartoon blue cloudy sky horizontal seamless pattern.jpg" id="3_qka38"]
 [ext_resource type="Texture2D" uid="uid://bwf3t1jjwms3e" path="res://Assets/random_photos/horse_racing/fence.png" id="4_fts3r"]
@@ -148,9 +147,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="TimerBar" parent="UI" instance=ExtResource("2_37f0h")]
-layout_mode = 1
 
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 0

@@ -12,10 +12,8 @@ var color2 = Color(1, 0, 0)
 signal score_announced
 
 func _ready():
-	if get_tree().current_scene.name == "horse_race": 
-		set_process(false)
-	else:
-		start_effect(10)
+	set_process(false)
+
 func start_effect(target):
 	target_value = target
 	rng.randomize()
@@ -33,7 +31,14 @@ func _process(delta: float) -> void:
 			self.label_settings.font_color = new_color_green
 		elif sign(target_value) < 0:
 			self.label_settings.font_color = new_color_red
+		else:
+			self.label_settings.font_color = Color.WHITE
 	else:
 		text = ("+" if target_value > 0 else "-") + "$" + str(abs(target_value)) if target_value != 0 else "$0"
 		score_announced.emit()
+		reset()
 		set_process(false)
+
+func reset():
+	elapsed = 0
+	target_value = 0

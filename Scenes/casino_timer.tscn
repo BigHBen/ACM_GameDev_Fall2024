@@ -1,12 +1,152 @@
-[gd_scene load_steps=3 format=3 uid="uid://v1edvxst6dio"]
+[gd_scene load_steps=11 format=3 uid="uid://v1edvxst6dio"]
 
 [ext_resource type="Script" path="res://Scripts/casino_timer.gd" id="1_ylown"]
+[ext_resource type="PackedScene" uid="uid://uoljc0ahxvy1" path="res://Scenes/timer_bar.tscn" id="2_a6plg"]
 [ext_resource type="AudioStream" uid="uid://cnnm54jx6q2t8" path="res://Audio/Classic Alarm Clock - Sound Effect  ProSounds.mp3" id="2_afe37"]
+[ext_resource type="Animation" uid="uid://bqhlxoy7hkgra" path="res://Assets/Animations/Menu/popup.res" id="4_00w3c"]
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="5_43w8s"]
+[ext_resource type="PackedScene" uid="uid://dfaxoa3wsgmy6" path="res://Scenes/horse/horse_race_winnings.tscn" id="6_6oce2"]
+
+[sub_resource type="Animation" id="Animation_3fqvu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Return:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["
+"]
+}
+
+[sub_resource type="Animation" id="Animation_0p0cv"]
+resource_name = "countdown"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Return:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Time to go back home (4)....", "Time to go back home (3)....
+", "Time to go back home (2)....", "Time to go back home (1)....
+", "Time to go back home (0)...."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_72ixi"]
+_data = {
+"RESET": SubResource("Animation_3fqvu"),
+"countdown": SubResource("Animation_0p0cv"),
+"popup": ExtResource("4_00w3c")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_jshlo"]
+font = ExtResource("5_43w8s")
+font_size = 75
 
 [node name="Casino_Timer" type="Timer"]
 script = ExtResource("1_ylown")
+game_time = 1
 
-[node name="alarm" type="AudioStreamPlayer2D" parent="."]
+[node name="TimerBar" parent="." instance=ExtResource("2_a6plg")]
+z_index = 2
+
+[node name="Alarm" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_afe37")
 
-[connection signal="timeout" from="." to="." method="_on_timeout"]
+[node name="ReturnTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="TimeoutPanel" type="Panel" parent="."]
+visible = false
+z_index = 2
+offset_left = 102.0
+offset_top = 20.0
+offset_right = 1062.0
+offset_bottom = 628.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TimeoutPanel"]
+libraries = {
+"": SubResource("AnimationLibrary_72ixi")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TimeoutPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -310.5
+offset_right = 575.0
+offset_bottom = 310.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Empty1" type="Label" parent="TimeoutPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+text = "Time's up!"
+label_settings = SubResource("LabelSettings_jshlo")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TimeoutPanel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Cashout" type="Label" parent="TimeoutPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Casino Cashout: "
+label_settings = SubResource("LabelSettings_jshlo")
+horizontal_alignment = 1
+
+[node name="Winnings" parent="TimeoutPanel/VBoxContainer/HBoxContainer" instance=ExtResource("6_6oce2")]
+layout_mode = 2
+
+[node name="Return" type="Label" parent="TimeoutPanel/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_jshlo")
+horizontal_alignment = 1
+
+[connection signal="animation_finished" from="TimeoutPanel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="TimerBar"]

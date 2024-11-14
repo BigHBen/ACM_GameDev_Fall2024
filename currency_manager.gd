@@ -2,6 +2,7 @@ extends Node2D
 
 # Variables
 var balance : int = 0 : set = set_balance, get = get_balance
+var debt : int = 0 : set = set_debt, get = get_debt
 var curr_round : int = 0 : set = set_round, get = get_round
 
 signal currency_manager_loaded
@@ -12,11 +13,18 @@ func _ready() -> void:
 
 # Setters
 func set_balance(value: int) -> void:
-	balance = max(0, value)
+	#balance = max(0, value)
+	balance = value
 
 # Getters
 func get_balance() -> int:
 	return balance
+
+func set_debt(value: int):
+	debt = max(0, value)
+
+func get_debt() -> int:
+	return debt
 
 func set_round(value):
 	curr_round = value

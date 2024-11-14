@@ -1,15 +1,148 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjoarybbdodvg"]
+[gd_scene load_steps=10 format=3 uid="uid://cjoarybbdodvg"]
 
 [ext_resource type="Texture2D" uid="uid://d3l4a68wye4c7" path="res://Assets/random_photos/punch_icon.webp" id="1_5cfuo"]
 [ext_resource type="Script" path="res://Scripts/chicken_fight/punch_spawn.gd" id="1_b35mr"]
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="3_26r06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sufvp"]
 size = Vector2(120, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w7qi8"]
+font = ExtResource("3_26r06")
+font_size = 45
+
+[sub_resource type="Animation" id="Animation_0pphe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.214844, 0.214844)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.699248, 0.582671, 0.456053, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wvyr4"]
+resource_name = "punch_hit"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.214844, 0.214844), Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5txkj"]
+resource_name = "punch_miss"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_581x2"]
+_data = {
+"RESET": SubResource("Animation_0pphe"),
+"punch_hit": SubResource("Animation_wvyr4"),
+"punch_miss": SubResource("Animation_5txkj")
+}
 
 [node name="punch_spawn" type="Area2D"]
 script = ExtResource("1_b35mr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.699248, 0.582671, 0.456053, 1)
 position = Vector2(2.84217e-14, -3.00927e-36)
 scale = Vector2(0.214844, 0.214844)
 texture = ExtResource("1_5cfuo")
@@ -27,3 +160,20 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "---                ---"
+
+[node name="HitLabel" type="Label" parent="."]
+visible = false
+offset_left = 31.0
+offset_top = -58.0
+offset_right = 221.0
+offset_bottom = -16.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "PERFECT"
+label_settings = SubResource("LabelSettings_w7qi8")
+
+[node name="PunchAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_581x2")
+}

@@ -1,4 +1,9 @@
+class_name PunchFist
 extends Area2D
+
+#Effects
+@onready var animator = $PunchAnimator
+@onready var hit_label = $HitLabel
 
 var velocity = Vector2.DOWN * 300
 var initial_pos = Vector2.ZERO

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bv6dr8u5h0gnw"]
+[gd_scene load_steps=20 format=3 uid="uid://bv6dr8u5h0gnw"]
 
 [ext_resource type="Script" path="res://Scripts/hub.gd" id="1_hugjr"]
 [ext_resource type="Texture2D" uid="uid://i6p7gwnbpebc" path="res://Assets/Packs/png/paper_panel_601_x_478.png" id="2_dfd3l"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://6co2ltecamvw" path="res://Assets/random_photos/vecteezy_room-inside-interior-cartoon-living-room-house-with_11803091_840/vecteezy_room-inside-interior-cartoon-living-room-house-with_11803091.jpg" id="3_ybcd3"]
 [ext_resource type="Script" path="res://Scripts/animation_player.gd" id="5_y18oi"]
 [ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="6_f3nq5"]
+[ext_resource type="AudioStream" uid="uid://de3vj81oxvohb" path="res://Audio/Door Open and Close Sound Effects.mp3" id="8_637bq"]
 
 [sub_resource type="Animation" id="Animation_3ehde"]
 length = 0.001
@@ -361,6 +362,8 @@ _data = {
 
 [node name="Hub" type="Node2D"]
 script = ExtResource("1_hugjr")
+INITIAL_BALANCE = 0
+casino_time = 45
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
@@ -530,6 +533,13 @@ offset_right = 631.0
 offset_bottom = 105.0
 theme_override_font_sizes/font_size = 40
 text = "Shop"
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="pay_button" type="AudioStreamPlayer2D" parent="Audio"]
+
+[node name="leave_home" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("8_637bq")
 
 [connection signal="pressed" from="UI/MenuButtons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="UI/MenuButtons/PayBills" to="." method="_on_pay_bills_pressed"]

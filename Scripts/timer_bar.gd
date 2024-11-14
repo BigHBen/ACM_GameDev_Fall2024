@@ -30,6 +30,7 @@ func _process(_delta: float) -> void:
 	
 	#Stop processes once game timer stops
 	if GAME_TIMER.is_stopped():
+		print("Time's up! (Timer_Bar)")
 		clock_flame.stop()
 		clock_flame.visible = false
 		clock.stop()
@@ -39,9 +40,7 @@ func update_progress(s,t):
 	progress_bar.value = (s / t) * 100.0
 	GAME_TIMER.bar_value = progress_bar.value
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		print(GAME_TIMER.GAME_TIMER.elapsed_time)
+
 
 func progress_halfway():
 	clock_halfway = true

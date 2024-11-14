@@ -27,7 +27,6 @@ var horses_info #From minigame_manager
 
 var horse_counter = 0
 var horse_preload = preload("res://Scenes/horse/horse.tscn")
-var horse = null
 var horses = []
 @export var num_horses = 5
 
@@ -87,16 +86,19 @@ func spawn_horses():
 	
 	var horse_spawn = start_position
 	for i in range(num_horses):
-		if i != 0: horse_spawn.y += spacing 
-		horse = horse_preload.instantiate()
+		if i != 0: horse_spawn.y += spacing
+		
+		var horse = horse_preload.instantiate()
 		horse.position = horse_spawn
-		if horses_info.is_empty():
-			horse.name = "#" + str(i) + " Horse"
-		else:
-			horse.name = "#" + str(i) + " " + horses_info[i]
+		
+		#Name horse
+		var horse_name = horses_info[i] if i < horses_info.size() else "Horse"
+		horse.name = "#" + str(i + 1) + " " + horse_name
+		
 		horse_counter += 1
 		horse.generate_positions()
 		add_child(horse)
+
 
 func start_audio():
 	$Audio/start_trumpet.play(3.5)
@@ -200,9 +202,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$UI/WinPanel/HBoxContainer/Winnings.score_announced.connect(score_announced)
 		if your_bet:
 			
-			
-			
-			
 			if win:
 				
 				#Will be passed to minigame manager -> Added to player balance
@@ -220,7 +219,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 				await get_tree().create_timer(1.25).timeout
 				$Audio/lose_result2.play()
 			
-			minigame_manager.set_winning_bet(WIN_AMOUNT)
+			minigame_manager.set_winning_bet(minigame_manager.winning_bet + WIN_AMOUNT)
 			
 		else:
 			$UI/WinPanel/HBoxContainer/Winnings.start_effect(0)

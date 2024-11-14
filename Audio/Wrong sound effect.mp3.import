@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bk7mamr66e1h5"
+path="res://.godot/imported/Wrong sound effect.mp3-b89ae1f17ef17aade4408613ef2aaf1d.mp3str"
+
+[deps]
+
+source_file="res://Audio/Wrong sound effect.mp3"
+dest_files=["res://.godot/imported/Wrong sound effect.mp3-b89ae1f17ef17aade4408613ef2aaf1d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

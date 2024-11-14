@@ -17,8 +17,8 @@ var coin_limit = 10
 @onready var reminder_panel = $UI/ReminderPopup
 
 #Horse Choices
-#var horse_count = randi() % 7 + 4
-var horse_count = 3
+var horse_count = randi() % 7 + 4
+#var horse_count = 3
 var horse_names = []
 var horse_name_endings = [
 	"Star", "Lightning", "Thunder", "Comet", "Spirit", 
@@ -26,7 +26,7 @@ var horse_name_endings = [
 	"Falcon", "Nova", "Zephyr", "Ranger", "Cannon",
 	"Champion", "Vagabond", "Liberty", "Jasper", 
 	"Dakota", "Pistol", "Cinnamon", "Flynn", "Cobalt", 
-	"Onyx", "Brady", "Rowan", "Titan"
+	"Onyx", "Brady", "Rowan", "Titan", "Friday"
 ]
 @onready var drop_down = $UI/MenuPanel/HorseChoicesPanel/OptionButton
 
@@ -38,9 +38,17 @@ func _ready() -> void:
 func setup():
 	for i in range(horse_count):
 		var random_name = horse_name_endings.pick_random()
-		
-		horse_names.append("Horse " + random_name)
-		horse_name_endings.erase(random_name)
+		if random_name.contains("Friday"):
+			horse_name_endings.erase(random_name)
+			if randi() % 10 == 0:
+				horse_names.append("Friday")
+			else:
+				var new_random_name = horse_name_endings.pick_random()
+				horse_names.append("Horse " + new_random_name)
+				horse_name_endings.erase(random_name)
+		else:
+			horse_names.append("Horse " + random_name)
+			horse_name_endings.erase(random_name)
 	drop_down.clear()
 	drop_down.add_item(" ")
 	for horse_name in horse_names:

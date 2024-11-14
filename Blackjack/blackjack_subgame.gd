@@ -119,7 +119,6 @@ func _process(delta: float) -> void:
 	
 
 
-
 func _input(event: InputEvent) -> void:
 	if !can_act:
 		return
