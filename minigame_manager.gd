@@ -5,6 +5,9 @@ var current_scene = null
 var winning_bet = 0 : set = set_winning_bet, get = get_winning_bet
 var minigame_count : int = 0
 
+var powerups = []
+
+
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
@@ -53,3 +56,15 @@ func set_slots_bet_amount(value):
 	slots_bet["amount"] = value
 	print("💸 Bet Amount: $", slots_bet["amount"], "💰")
 #endregion
+
+func set_powerup(value):
+	for i in powerups:
+		if powerups[i] == value:
+			do_something()
+	print("You're using powerup")
+
+func get_powerup():
+	pass
+
+func do_something():
+	pass

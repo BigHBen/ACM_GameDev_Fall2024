@@ -139,6 +139,7 @@ func _user_clicked() -> void:
 			if perfect_hit[1]:
 				perfect_hit[1].hit_label.text = "PERFECT"
 				perfect_hit[1].animator.play("punch_hit")
+				$"Audio/Punch!".play(2)
 			perfect_hit = null
 			
 			#Lower chicken health
@@ -150,6 +151,7 @@ func _user_clicked() -> void:
 			if meh_hit[1]:
 				meh_hit[1].hit_label.text = "MEH"
 				meh_hit[1].animator.play("punch_hit")
+				$"Audio/Punch!".play(2)
 			meh_hit = null
 			
 			chicken_health -= 2
@@ -159,6 +161,7 @@ func _user_clicked() -> void:
 			
 		else:
 			print("miss")
+			$Audio/Whiff.play()
 			print("chicken health is still: ", chicken_health, "\n")
 			show_miss_label()
 		can_hit = false

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://dudqf5m3786g5"]
+
+[ext_resource type="Script" path="res://shop.gd" id="1_xqaak"]
+[ext_resource type="PackedScene" uid="uid://cfm68bn4mt8l0" path="res://powerup_button.tscn" id="2_fcjoa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_obhfb"]
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_xqaak")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" parent="UI" instance=ExtResource("2_fcjoa")]
+layout_mode = 0
+
+[node name="Panel2" type="Panel" parent="UI"]
+layout_mode = 2
+offset_left = -7.0
+offset_top = 10.0
+offset_right = 275.0
+offset_bottom = 157.0
+
+[node name="Label" type="Label" parent="UI/Panel2"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 250.0
+offset_bottom = 63.0
+text = "DOUBLE BET"
+label_settings = SubResource("LabelSettings_obhfb")
+
+[node name="Panel3" type="Panel" parent="UI"]
+layout_mode = 2
+offset_left = 635.0
+offset_top = 5.0
+offset_right = 983.0
+offset_bottom = 152.0
+
+[node name="Label" type="Label" parent="UI/Panel3"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 250.0
+offset_bottom = 63.0
+text = "FREEZE (SLOTS)"
+label_settings = SubResource("LabelSettings_obhfb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

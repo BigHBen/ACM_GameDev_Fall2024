@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddrj727cc3jhk"]
+
+[ext_resource type="Texture2D" uid="uid://cxia72218ukhw" path="res://Assets/random_photos/Dev/atm/bank-building-with-cityscape_1284-52265.png" id="1_3l663"]
+[ext_resource type="Script" path="res://Scenes/Dev/atm_scene/offshore_bank.gd" id="1_ng4jm"]
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="3_43ty7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r0dqu"]
+font = ExtResource("3_43ty7")
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_574e7"]
+font = ExtResource("3_43ty7")
+font_size = 50
+
+[node name="Offshore_Bank" type="Node2D"]
+script = ExtResource("1_ng4jm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(580, 327)
+scale = Vector2(1.84345, 1.27734)
+texture = ExtResource("1_3l663")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuPanel" type="Panel" parent="UI"]
+offset_left = 263.0
+offset_top = 74.0
+offset_right = 902.0
+offset_bottom = 512.0
+
+[node name="Panel" type="Panel" parent="UI/MenuPanel"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 336.0
+offset_right = 523.0
+offset_bottom = 417.0
+
+[node name="SlotsGameExit" type="Button" parent="UI/MenuPanel/Panel"]
+layout_mode = 2
+offset_left = 216.0
+offset_top = 11.0
+offset_right = 358.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MenuPanel"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 156.0
+offset_right = 578.0
+offset_bottom = 242.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MenuPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/MenuPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Amount to deposit: $"
+label_settings = SubResource("LabelSettings_r0dqu")
+
+[node name="EnterDeposit" type="TextEdit" parent="UI/MenuPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Amount to deposit: $
+"
+placeholder_text = "Amount to deposit: $"
+
+[node name="Button" type="Button" parent="UI/MenuPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "DEPOSIT"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/MenuPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/MenuPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Amount to withdraw: $"
+label_settings = SubResource("LabelSettings_r0dqu")
+
+[node name="EnterDeposit" type="TextEdit" parent="UI/MenuPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+placeholder_text = "Amount to withdraw: $"
+
+[node name="Button" type="Button" parent="UI/MenuPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "WITHDRAW"
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 86.0
+offset_right = 1009.0
+offset_bottom = 154.0
+text = "**FOR DEV PURPOSES ONLY**"
+label_settings = SubResource("LabelSettings_574e7")
+
+[connection signal="button_down" from="UI/MenuPanel/Panel/SlotsGameExit" to="." method="_on_game_exit_button_down"]

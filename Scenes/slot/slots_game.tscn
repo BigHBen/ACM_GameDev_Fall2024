@@ -153,7 +153,7 @@ texture = ExtResource("5_o4nq3")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -1
 color = Color(0, 0.926264, 0.666158, 1)
-polygon = PackedVector2Array(348, 223, 349, 405, 433, 409, 432, 491, 680, 490, 679, 409, 770, 407, 771, 207, 345, 206)
+polygon = PackedVector2Array(348, 223, 349, 405, 433, 409, 432, 491, 680, 490, 679, 409, 770, 407, 771, 207, 423.962, 206.185, 345, 206)
 
 [node name="WinPanel" type="Panel" parent="."]
 visible = false

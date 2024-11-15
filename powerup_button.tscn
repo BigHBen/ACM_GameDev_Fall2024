@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfm68bn4mt8l0"]
+
+[ext_resource type="Script" path="res://powerup_button.gd" id="1_m2i0c"]
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="1_wo6hr"]
+
+[node name="Panel" type="Panel"]
+offset_left = 298.0
+offset_top = 9.0
+offset_right = 684.0
+offset_bottom = 156.0
+script = ExtResource("1_m2i0c")
+
+[node name="Powerup" type="Button" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 388.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("1_wo6hr")
+theme_override_font_sizes/font_size = 75
+text = "POWERUP_NAME"
+
+[connection signal="button_down" from="Powerup" to="." method="_on_powerup_button_down"]
