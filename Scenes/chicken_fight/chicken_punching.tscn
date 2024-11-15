@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dfaxoa3wsgmy6" path="res://Scenes/horse/horse_race_winnings.tscn" id="4_datas"]
 [ext_resource type="Texture2D" uid="uid://nlpuxfwlb1p" path="res://Assets/random_photos/placeholder_chicken.png" id="4_j4f78"]
 [ext_resource type="Texture2D" uid="uid://d27x67bbeg8j4" path="res://Assets/random_photos/placeholder_punch.png" id="5_k6qx7"]
-[ext_resource type="Texture2D" uid="uid://c1ln885l6bv6j" path="res://Assets/random_photos/HealthUI (1).png" id="6_wgjhu"]
+[ext_resource type="Texture2D" uid="uid://cq8wmcavbrdet" path="res://Assets/random_photos/hearts/vec.png" id="6_j0pqv"]
 [ext_resource type="Animation" uid="uid://bqhlxoy7hkgra" path="res://Assets/Animations/Menu/popup.res" id="7_p1x0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a65t"]
@@ -67,6 +67,7 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="chicken_punching" type="Node2D"]
 script = ExtResource("1_w2ihy")
+chicken_health = 10
 
 [node name="spawn_punch_timer" type="Timer" parent="."]
 wait_time = 1.5
@@ -121,15 +122,14 @@ position = Vector2(638, 273)
 scale = Vector2(0.526, 0.526)
 texture = ExtResource("4_j4f78")
 
-[node name="ProgressBar" type="ProgressBar" parent="PlaceholderChicken"]
-offset_right = 4.0
-offset_bottom = 27.0
-
-[node name="Sprite2D" type="Sprite2D" parent="PlaceholderChicken"]
-position = Vector2(-21.2352, -323.007)
-scale = Vector2(1.155, 1)
-texture = ExtResource("6_wgjhu")
-vframes = 7
+[node name="HealthProgressBar" type="TextureProgressBar" parent="PlaceholderChicken"]
+offset_left = -241.445
+offset_top = -500.0
+offset_right = 238.555
+offset_bottom = -196.0
+max_value = 3.0
+value = 3.0
+texture_progress = ExtResource("6_j0pqv")
 
 [node name="PlaceholderPunch" type="Sprite2D" parent="."]
 position = Vector2(648, 310)
@@ -211,6 +211,9 @@ text = "READY
 label_settings = SubResource("LabelSettings_1jt8d")
 horizontal_alignment = 1
 
+[node name="FinishTimer" type="Timer" parent="."]
+wait_time = 4.0
+
 [connection signal="timeout" from="spawn_punch_timer" to="." method="_on_spawn_punch_timer_timeout"]
 [connection signal="area_entered" from="perfect_zone" to="." method="_on_perfect_zone_area_entered"]
 [connection signal="area_exited" from="perfect_zone" to="." method="_on_perfect_zone_area_exited"]
@@ -219,4 +222,6 @@ horizontal_alignment = 1
 [connection signal="timeout" from="can_hit_timer" to="." method="_on_can_hit_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="temp punch ani" to="." method="_on_temp_punch_ani_timeout"]
+[connection signal="animation_finished" from="WinPanel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Start_Timer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="FinishTimer" to="." method="_on_finish_timer_timeout"]

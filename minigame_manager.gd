@@ -39,3 +39,17 @@ func set_horse_bet_amount(value):
 func set_horse_names(array):
 	horse_names = array
 #endregion
+
+#region Slots
+var slots_bet = {} : set = set_slots_bet_info, get = get_slots_bet_info
+
+func set_slots_bet_info(value):
+	slots_bet["amount"] = value[0]
+
+func get_slots_bet_info():
+	return slots_bet
+
+func set_slots_bet_amount(value):
+	slots_bet["amount"] = value
+	print("💸 Bet Amount: $", slots_bet["amount"], "💰")
+#endregion

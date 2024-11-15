@@ -3,6 +3,8 @@ extends Node2D
 var Bet = 10
 var win = 0
 
+@export var tries = 3 : set=set_tries, get=get_tries
+
 # Variables for nodes in scene
 @onready var button: Button = $Control/Button
 @onready var slot: AnimatedSprite2D = $Control/Panel/HBoxContainer/Animation/Slot
@@ -12,12 +14,34 @@ var win = 0
 @onready var result2: Sprite2D = $Control/Panel/HBoxContainer/Results/Slot2_pic
 @onready var result3: Sprite2D = $Control/Panel/HBoxContainer/Results/Slot3_pic
 
+
+
+#Hilton - Added win screen
+#Hilton - Bet is loaded from menu
+
+@export var slot_spin_time : float = 3.0
+
+@onready var minigame_manager = get_node("/root/MinigameManager")
+var won = false
+var your_bet #From minigame_manager
+var WIN_AMOUNT : int = 0# Changes player balance
+@onready var win_anim = $WinPanel/AnimationPlayer
+@onready var finish_timer = $FinishTimer
+@onready var winnings_label = $WinPanel/HBoxContainer/Winnings
+@onready var return_label = $WinPanel/HBoxContainer/Return
+@onready var spin_label = $Control/Spins_Count
+var casino = "res://Scenes/casino.tscn"
+
 # By the way you can edit the animation that plays in the slot_animation scene
 # Main use for editing is increasing or decreasing the frames per second in order to change how fast the animation plays
 # Experiment with different values to see what looks nice
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	your_bet = minigame_manager.get_slots_bet_info()
+	
+	#Automatically starts first spin
+	tries -= 1
 	Randomized_Pic()
 	
 func Randomized_Pic():
@@ -30,7 +54,7 @@ func Randomized_Pic():
 	# Also temporarily removes the play button to prevent multiple inputs
 	Slots_Start()
 	# Lets the animation play for 3 seconds for finalizing and letting the rest of the code play.
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(slot_spin_time).timeout
 	# Shows the results and hides the slots animation
 	Slots_End()
 	
@@ -85,11 +109,23 @@ func Check_Results(Result1, Result2, Result3, bet):
 				pass
 		print("You've Won: " )
 		print(winnings)
+		won = true
+		finish_timer.start()
+		$WinPanel/HBoxContainer/Title.text = "YOU WIN"
+		win_anim.play("popup")
 	else:
 		print("You Lost!")
+		
+		#Set up lose popup and return to casino
+		if tries == 0:
+			won = false
+			finish_timer.start()
+			$WinPanel/HBoxContainer/Title.text = "YOU LOSE 😿"
+			win_anim.play("popup")
 	return winnings
 
 func Slots_Start():
+	print("You have %d tries left" % tries)
 	# Disable the play again button
 	button.disabled = true
 	# Start the animation
@@ -122,4 +158,62 @@ func Slots_End():
 	button.disabled = false
 
 func _on_Replay_pressed() -> void:
-	Randomized_Pic()
+	if tries >= 0:
+		Randomized_Pic()
+		tries -= 1
+	else:
+		won = false
+		finish_timer.start()
+		$WinPanel/HBoxContainer/Title.text = "YOU LOSE :("
+		win_anim.play("popup")
+
+
+func score_announced():
+	pass
+
+func _process(_delta: float) -> void:
+	if !finish_timer.is_stopped():
+			update_return_label()
+
+func update_return_label():
+	var remaining_time = int(finish_timer.time_left) + 1
+	if remaining_time < 4 && remaining_time > 0: 
+		return_label.text = "Returning to casino (%d)...." % remaining_time
+
+func set_tries(value):
+	tries = value
+	spin_label.text = "SPINS LEFT: %d" % tries
+
+func get_tries():
+	return tries
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "popup":
+		winnings_label.score_announced.connect(score_announced)
+		if your_bet:
+			if won:
+				#Will be passed to minigame manager -> Added to player balance
+				WIN_AMOUNT = your_bet["amount"]
+				
+				winnings_label.start_effect(your_bet["amount"])
+				#$Audio/win_result.play()
+			else:
+				
+				#Will be passed to minigame manager -> Added to player balance
+				WIN_AMOUNT = -your_bet["amount"]
+				
+				winnings_label.start_effect(-your_bet["amount"])
+				#$Audio/lose_result.play()
+				#await get_tree().create_timer(1.25).timeout
+				#$Audio/lose_result2.play()
+			
+			minigame_manager.set_winning_bet(minigame_manager.winning_bet + WIN_AMOUNT)
+			
+		else:
+			winnings_label.start_effect(0)
+
+
+func _on_finish_timer_timeout() -> void:
+	return_label.text = "Returning to casino (0)...."
+	minigame_manager.minigame_count += 1
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file(casino)

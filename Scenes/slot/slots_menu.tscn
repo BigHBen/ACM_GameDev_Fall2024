@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw1o4lv7vaslv"]
+[gd_scene load_steps=10 format=3 uid="uid://bw1o4lv7vaslv"]
 
 [ext_resource type="Script" path="res://Scripts/slots/slots_menu.gd" id="1_dxni7"]
 [ext_resource type="Texture2D" uid="uid://df8agdm7et1go" path="res://Assets/random_photos/Slots_background.jpg" id="2_mv87s"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1kncbvfybx8c" path="res://Assets/Packs/Top-Down/Chips/gamedevchips(rgb)LargeOutline/BlueChipLargeOutline.png" id="4_ejykk"]
 [ext_resource type="Texture2D" uid="uid://bauu7mw4t452n" path="res://Assets/Packs/Top-Down/Chips/gamedevchips(rgb)LargeOutline/GreenChipLargeOutline.png" id="5_x06th"]
 [ext_resource type="PackedScene" uid="uid://bjpcdxp8og41e" path="res://Scenes/bet_stack_coin.tscn" id="6_54d0m"]
+[ext_resource type="PackedScene" uid="uid://mp77emi06k1b" path="res://Scenes/menu_stuff/bet_reminder_popup.tscn" id="6_ar5v1"]
 [ext_resource type="AudioStream" uid="uid://d25h2f3i2bdqs" path="res://Audio/cha ching sound effect download.wav" id="7_ktaqx"]
 
 [sub_resource type="FontFile" id="FontFile_r2x5s"]
@@ -67,7 +68,7 @@ offset_bottom = 40.0
 [node name="MenuPanel" type="Panel" parent="UI"]
 layout_mode = 0
 offset_left = 263.0
-offset_top = 134.0
+offset_top = 74.0
 offset_right = 902.0
 offset_bottom = 512.0
 
@@ -125,10 +126,10 @@ vertical_icon_alignment = 2
 
 [node name="Panel" type="Panel" parent="UI/MenuPanel"]
 layout_mode = 0
-offset_left = 122.0
-offset_top = 285.0
-offset_right = 518.0
-offset_bottom = 366.0
+offset_left = 72.0
+offset_top = 298.0
+offset_right = 468.0
+offset_bottom = 379.0
 
 [node name="SlotsGameStart" type="Button" parent="UI/MenuPanel/Panel"]
 layout_mode = 2
@@ -148,6 +149,14 @@ offset_bottom = 74.0
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
+[node name="ReminderPopup" parent="UI" instance=ExtResource("6_ar5v1")]
+visible = false
+layout_mode = 0
+offset_left = 256.0
+offset_top = 124.0
+offset_right = 896.0
+offset_bottom = 524.0
+
 [node name="bet_stack_coin" parent="." instance=ExtResource("6_54d0m")]
 visible = false
 position = Vector2(830, 380)
@@ -156,8 +165,15 @@ position = Vector2(830, 380)
 position = Vector2(830, 380)
 stream = ExtResource("7_ktaqx")
 
+[node name="BetRemove" type="Button" parent="."]
+offset_left = 776.0
+offset_top = 98.0
+offset_right = 883.0
+offset_bottom = 459.0
+
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/5_dolar" to="." method="_on_5_dolar_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/10_dollar_bet" to="." method="_on_10_dollar_bet_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/HBoxContainer/25_dollar_bet" to="." method="_on_25_dollar_bet_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/Panel/SlotsGameStart" to="." method="_on_slots_game_start_pressed"]
 [connection signal="pressed" from="UI/MenuPanel/Panel/SlotsGameExit" to="." method="_on_slots_game_exit_pressed"]
+[connection signal="button_down" from="BetRemove" to="." method="_on_bet_remove_button_down"]

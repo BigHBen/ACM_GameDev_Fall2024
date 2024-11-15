@@ -20,11 +20,17 @@ var punch_spawn_scene = preload("res://Scenes/chicken_fight/punch_spawn.tscn")
 @onready var win_panel = $WinPanel
 @onready var win_anim : AnimationPlayer = $WinPanel/AnimationPlayer
 
+
 @onready var miss_label = $MissLabel
+@onready var return_label = $WinPanel/HBoxContainer/Return
+
+var casino = "res://Scenes/casino.tscn" #Minigame select scene
 
 #	these booleans are to check if a rhythm icon has spawned, and if it has, then it will
 #	check whether it was perfectly aligned with the line, or if it was off the line.
 var is_spawned = false
+
+var WIN_AMOUNT : int = 0 # Changes player balance
 
 #Status
 var perfect_hit = []
@@ -39,7 +45,14 @@ var can_hit = true;
 
 #	chicken's health bar, if it depletes, then the minigame should end.
 #var chicken_health = 30
-@export var chicken_health = 30
+
+
+@onready var chicken_health_bar = $PlaceholderChicken/HealthProgressBar
+
+#Changes progress bar
+@export var chicken_health = 30 : set=set_chicken_health, get=get_chicken_health
+
+
 
 #	testing the minigame with a boolean
 var game_started_testing = false
@@ -47,6 +60,7 @@ var game_started_testing = false
 # Start game with timer
 @onready var start_timer = $Start_Timer
 @onready var countdown_label = $Start_Timer/StartCountdown
+@onready var finish_timer = $FinishTimer
 
 func _ready() -> void:
 	
@@ -68,20 +82,27 @@ func start_game():
 func _process(_delta: float) -> void:
 	
 	#Start Timer Label Stuff
-	if !start_timer.is_stopped():
-		update_start_label()
-	if(game_started_testing && !is_spawned && chicken_health > 0):
-		spawn_hit()
-		is_spawned = true
-		wait_for_next_hit()
 	if chicken_health <= 0: #When chicken is done for
-		beat_chicken()
-		set_process(false)
+		#beat_chicken()
+		if !finish_timer.is_stopped():
+			update_return_label()
+	else:
+		if !start_timer.is_stopped():
+			update_start_label()
+		if(game_started_testing && !is_spawned && chicken_health > 0):
+			spawn_hit()
+			is_spawned = true
+			wait_for_next_hit()
 
 func update_start_label():
 	var remaining_time = int(start_timer.time_left) + 1
 	if remaining_time < start_timer.wait_time && remaining_time > 0: 
 		countdown_label.text = str(remaining_time)
+
+func update_return_label():
+	var remaining_time = int(finish_timer.time_left) + 1
+	if remaining_time < 4 && remaining_time > 0: 
+		return_label.text = "Returning to casino (%d)...." % remaining_time
 
 func beat_chicken():
 	
@@ -89,9 +110,9 @@ func beat_chicken():
 	score += 100
 	
 	$WinPanel/HBoxContainer/Title.text = "YOU BEAT THE CHICKEN: %s" % [score]
-	$WinPanel/HBoxContainer/Winnings.start_effect(score)
 	win_anim.play("popup")
 	#$Audio/win_result.play()
+	finish_timer.start()
 
 
 # Constantly checking if the player has clicked anywhere on the viewport
@@ -166,6 +187,23 @@ func wait_for_next_hit() -> void:
 func wait_for_next_click() -> void:
 	can_hit_timer.start(0.35)
 
+func set_chicken_health(value):
+	chicken_health = value
+	var percentage = (chicken_health / 100.0) * 3
+	
+	if chicken_health_bar:
+		if percentage >= 0.75:
+			chicken_health_bar.value = 3  
+		elif percentage >= 0.25:
+			chicken_health_bar.value = 2  
+		elif percentage > 0:
+			chicken_health_bar.value = 1  
+		else:
+			chicken_health_bar.value = 0 
+			beat_chicken()
+
+func get_chicken_health():
+	return chicken_health
 #	when the timer for its respective type runs out, it will set the boolean back to its
 #	original value.
 func _on_spawn_punch_timer_timeout() -> void:
@@ -212,3 +250,20 @@ func _on_temp_punch_ani_timeout() -> void:
 
 func _on_start_timer_timeout() -> void:
 	start_game()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "popup":
+		#Will be passed to minigame manager -> Added to player balance
+		WIN_AMOUNT = score
+		$WinPanel/HBoxContainer/Winnings.start_effect(score)
+		#$Audio/win_result.play()
+		await get_tree().create_timer(1.25).timeout
+		global_scene.set_winning_bet(global_scene.winning_bet + WIN_AMOUNT)
+
+
+func _on_finish_timer_timeout() -> void:
+	return_label.text = "Returning to casino (0)...."
+	global_scene.minigame_count += 1
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file(casino)
