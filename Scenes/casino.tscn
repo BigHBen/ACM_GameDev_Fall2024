@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3743b7haxrux"]
+[gd_scene load_steps=13 format=3 uid="uid://c3743b7haxrux"]
 
 [ext_resource type="Script" path="res://Scripts/casino.gd" id="1_2k6it"]
 [ext_resource type="Texture2D" uid="uid://bcrsq7ommq5pu" path="res://Assets/random_photos/abstract-blur-defocused-hotel-lobby-600nw-2340724233.webp" id="1_xye6o"]
@@ -20,6 +20,12 @@ corner_radius_bottom_left = 30
 [sub_resource type="LabelSettings" id="LabelSettings_lhxm5"]
 font = ExtResource("6_dpbch")
 font_size = 75
+
+[sub_resource type="LabelSettings" id="LabelSettings_gksvj"]
+font_size = 35
+font_color = Color(0.629156, 0.00031439, 0.635246, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="casino" type="Node2D"]
 script = ExtResource("1_2k6it")
@@ -115,6 +121,24 @@ offset_bottom = 643.0
 text = "earnings: $"
 label_settings = SubResource("LabelSettings_lhxm5")
 vertical_alignment = 1
+
+[node name="Panel4" type="Panel" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 117.0
+offset_top = 102.0
+offset_right = 894.0
+offset_bottom = 534.0
+
+[node name="Label" type="Label" parent="UI/Panel4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.027
+offset_left = 180.0
+offset_top = 106.0
+offset_right = 521.0
+offset_bottom = 265.336
+label_settings = SubResource("LabelSettings_gksvj")
 
 [node name="Audio" type="Node2D" parent="."]
 

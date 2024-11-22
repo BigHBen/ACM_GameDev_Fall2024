@@ -14,7 +14,11 @@ var win = 0
 @onready var result2: Sprite2D = $Control/Panel/HBoxContainer/Results/Slot2_pic
 @onready var result3: Sprite2D = $Control/Panel/HBoxContainer/Results/Slot3_pic
 
-
+#variable for which slot and object is frozen
+var freeze
+var slot1_res
+var slot2_res
+var slot3_res
 
 #Hilton - Added win screen
 #Hilton - Bet is loaded from menu
@@ -38,18 +42,45 @@ var casino = "res://Scenes/casino.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	minigame_manager.get_powerup()
 	your_bet = minigame_manager.get_slots_bet_info()
 	
-	#Automatically starts first spin
-	tries -= 1
-	Randomized_Pic()
+	if (MinigameManager.get_powerup("Freeze_Slot") != null && MinigameManager.get_powerup("Freeze_Slot")[1] == true):
+		slot1_res = randi_range(0,3)
+		slot2_res = randi_range(0,3)
+		slot3_res = randi_range(0,3)
+		Slots_Results(result1, slot1_res)
+		Slots_Results(result2, slot2_res)
+		Slots_Results(result3, slot3_res)
+		$FreezePanel.visible = true
+	else:
+		#Automatically starts first spin if freeze slot not used
+		tries -= 1
+		Randomized_Pic()
+	
 	
 func Randomized_Pic():
 	# Calculate what each slot landed on to be used in later functions
-	var slot1_result = randi_range(0,3)
-	var slot2_result = randi_range(0,3)
-	var slot3_result = randi_range(0,3)
+	var slot1_result = slot1_res
+	var slot2_result = slot2_res
+	var slot3_result = slot3_res
+	match freeze:
+		1:
+			slot2_result = randi_range(0,3)
+			slot3_result = randi_range(0,3)
+			pass
+		2:
+			slot1_result = randi_range(0,3)
+			slot3_result = randi_range(0,3)
+			pass
+		3:
+			slot1_result = randi_range(0,3)
+			slot2_result = randi_range(0,3)
+			pass
+		_:
+			slot1_result = randi_range(0,3)
+			slot2_result = randi_range(0,3)
+			slot3_result = randi_range(0,3)
+			pass
 	
 	# Hides the results and shows the slots animation.
 	# Also temporarily removes the play button to prevent multiple inputs
@@ -187,6 +218,7 @@ func set_tries(value):
 
 func get_tries():
 	return tries
+	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "popup":
 		winnings_label.score_announced.connect(score_announced)
@@ -218,3 +250,25 @@ func _on_finish_timer_timeout() -> void:
 	minigame_manager.minigame_count += 1
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file(casino)
+
+
+func _on_button_1_pressed() -> void:
+	freeze = 1
+	$FreezePanel.visible = false
+	Randomized_Pic()
+	tries = 2
+	
+
+
+func _on_button_2_pressed() -> void:
+	freeze = 2
+	$FreezePanel.visible = false
+	Randomized_Pic()
+	tries = 2
+
+
+func _on_button_3_pressed() -> void:
+	freeze = 3
+	$FreezePanel.visible = false
+	Randomized_Pic()
+	tries = 2
