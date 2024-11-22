@@ -5,7 +5,7 @@ var current_scene = null
 var winning_bet = 0 : set = set_winning_bet, get = get_winning_bet
 var minigame_count : int = 0
 
-var powerups = [["Freeze_Slot", false, 20], 
+var powerups = [["Freeze_Slot", true, 20], 
 				["Double_Time", false, 5],
 				["Double_Money", false, 10]]
 
