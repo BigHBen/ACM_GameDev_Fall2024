@@ -1,38 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://dudqf5m3786g5"]
+[gd_scene load_steps=7 format=3 uid="uid://dudqf5m3786g5"]
 
 [ext_resource type="Script" path="res://shop.gd" id="1_xqaak"]
 [ext_resource type="PackedScene" uid="uid://cfm68bn4mt8l0" path="res://powerup_button.tscn" id="2_fcjoa"]
+[ext_resource type="LabelSettings" uid="uid://hidyjhgwewm1" path="res://Scenes/menu_stuff/prices.tres" id="3_opuul"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_obhfb"]
 font_size = 45
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_s5wrc"]
+font_color = Color(0.879232, 0, 0.394183, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fnb2v"]
+font_color = Color(0.973571, 0, 0.11609, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_xqaak")
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+offset_left = 347.0
+offset_top = 13.0
+offset_right = 620.0
+offset_bottom = 76.0
+text = "DOUBLE BET"
+label_settings = SubResource("LabelSettings_obhfb")
+
 [node name="Panel" parent="UI" instance=ExtResource("2_fcjoa")]
 layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 385.0
+offset_bottom = 146.0
 
 [node name="Panel2" type="Panel" parent="UI"]
 layout_mode = 2
-offset_left = -7.0
-offset_top = 10.0
-offset_right = 275.0
-offset_bottom = 157.0
-
-[node name="Label" type="Label" parent="UI/Panel2"]
-layout_mode = 2
-offset_left = 4.0
-offset_right = 250.0
-offset_bottom = 63.0
-text = "DOUBLE BET"
-label_settings = SubResource("LabelSettings_obhfb")
+offset_left = 343.0
+offset_top = 13.0
+offset_right = 625.0
+offset_bottom = 160.0
 
 [node name="Panel3" type="Panel" parent="UI"]
 layout_mode = 2
@@ -53,3 +70,73 @@ label_settings = SubResource("LabelSettings_obhfb")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="UI 2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI 2"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 91.0
+offset_right = 505.0
+offset_bottom = 191.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI 2/HBoxContainer"]
+layout_mode = 2
+
+[node name="first_power" type="Button" parent="UI 2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="price1" type="Label" parent="UI 2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("3_opuul")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI 2/HBoxContainer"]
+layout_mode = 2
+
+[node name="second_power" type="Button" parent="UI 2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="price2" type="Label" parent="UI 2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+label_settings = ExtResource("3_opuul")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI 2/HBoxContainer"]
+layout_mode = 2
+
+[node name="third_power" type="Button" parent="UI 2/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="price3" type="Label" parent="UI 2/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+label_settings = ExtResource("3_opuul")
+
+[node name="leave" type="Button" parent="UI 2/HBoxContainer"]
+layout_mode = 2
+text = "go back to main screen"
+
+[node name="already_bought" type="Label" parent="."]
+visible = false
+offset_left = 286.0
+offset_top = 289.0
+offset_right = 326.0
+offset_bottom = 312.0
+text = "You Have already bought that"
+label_settings = SubResource("LabelSettings_s5wrc")
+
+[node name="insufficient" type="Label" parent="."]
+visible = false
+offset_left = 250.0
+offset_top = 249.0
+offset_right = 441.0
+offset_bottom = 303.0
+text = "Insufficient Funds"
+label_settings = SubResource("LabelSettings_fnb2v")
+
+[connection signal="pressed" from="UI 2/HBoxContainer/VBoxContainer/first_power" to="." method="_on_first_power_pressed"]
+[connection signal="pressed" from="UI 2/HBoxContainer/VBoxContainer2/second_power" to="." method="_on_second_power_pressed"]
+[connection signal="pressed" from="UI 2/HBoxContainer/VBoxContainer3/third_power" to="." method="_on_third_power_pressed"]
+[connection signal="pressed" from="UI 2/HBoxContainer/leave" to="." method="_on_leave_pressed"]

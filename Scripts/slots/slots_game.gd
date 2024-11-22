@@ -38,7 +38,6 @@ var casino = "res://Scenes/casino.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	minigame_manager.get_powerup()
 	your_bet = minigame_manager.get_slots_bet_info()
 	
 	#Automatically starts first spin

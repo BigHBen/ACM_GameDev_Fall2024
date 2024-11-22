@@ -165,6 +165,5 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func _on_to_shop_pressed() -> void:
-	print("Shop - Purchase Companions (To-Do)")
-	#get_tree().change_scene_to_file(shop)
+	get_tree().change_scene_to_file("res://Scenes/shop.tscn")
 #endregion

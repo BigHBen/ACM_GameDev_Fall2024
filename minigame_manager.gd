@@ -5,7 +5,9 @@ var current_scene = null
 var winning_bet = 0 : set = set_winning_bet, get = get_winning_bet
 var minigame_count : int = 0
 
-var powerups = []
+var powerups = [["Freeze_Slot", false, 20], 
+				["Double_Time", false, 5],
+				["Double_Money", false, 10]]
 
 
 func _ready():
@@ -57,14 +59,22 @@ func set_slots_bet_amount(value):
 	print("💸 Bet Amount: $", slots_bet["amount"], "💰")
 #endregion
 
+func get_size_powerup():
+	return (powerups.size())
+	
 func set_powerup(value):
-	for i in powerups:
-		if powerups[i] == value:
-			do_something()
-	print("You're using powerup")
-
-func get_powerup():
 	pass
 
+func get_powerup(value):
+	if typeof(value) == TYPE_INT:
+		return powerups[value]
+	elif typeof(value) == TYPE_STRING:
+		var find = -1
+		for i in range(0, powerups.size()):
+			if (powerups[i][0] == value):
+				find = i
+		if(find != -1): return powerups[find]
+		else:
+			return 
 func do_something():
 	pass

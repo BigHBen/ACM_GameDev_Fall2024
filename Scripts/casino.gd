@@ -7,6 +7,8 @@ var minigames =  {
 	chicken_minigame = "res://Scenes/chicken_fight/chicken_punching.tscn",
 	hub = "res://Scenes/hub.tscn"
 	}
+#currency
+@onready var Currency_Manager = get_node("/root/CurrencyManager")
 
 #Timer
 @onready var casino_timer = get_node("/root/CasinoTimer")
@@ -24,6 +26,7 @@ func _ready() -> void:
 	background_music.volume_db = -25.0
 	backgronud_crowd.volume_db = -25.0
 	background_music.play(46)
+	_get_powerups()
 	print("\nWelcome to the Casino!")
 	print("You've played %d minigames" % minigame_manager.minigame_count)
 	if minigame_manager.minigame_count > 0:
@@ -50,3 +53,24 @@ func _on_chicken_minigame_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+func _get_powerups():
+	if (MinigameManager.get_powerup("Double_Time") != null && MinigameManager.get_powerup("Double_Time")[1] == true ):
+		MinigameManager.get_powerup("Double_Time")[1] = false
+		casino_timer.set_game_time(casino_timer.get_game_time() * 2)
+		$UI/Panel4/Label.text = "You Have activated Double Time"
+		$UI/Panel4.visible = true
+		await get_tree().create_timer(1).timeout
+		$UI/Panel4.visible = false
+	if(MinigameManager.get_powerup("Double_Money") != null && MinigameManager.get_powerup("Double_Money")[1] == true):
+		MinigameManager.get_powerup("Double_Money")[1] = false
+		if(Currency_Manager.get_balance() == 0):
+			Currency_Manager.set_balance(20) 
+			$UI/Panel4/Label.text = "You Have activated gotten $20"
+		else:
+			var bal = Currency_Manager.get_balance()
+			Currency_Manager.set_balance(bal * 2)
+			$UI/Panel4/Label.text = "You Have activated gotten double money"
+		$UI/Panel4.visible = true
+		await get_tree().create_timer(1).timeout
+		$UI/Panel4.visible = false
