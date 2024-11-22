@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddp6n510276ax"]
+
+[ext_resource type="Script" path="res://Menu/Options.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://jchiwxks1644" path="res://Menu/background.png" id="4"]
+[ext_resource type="PackedScene" path="res://fade_in/FadeIn.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Menu/UISound.tscn" id="6"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Music Sound" type="Label" parent="VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+text = "Music:"
+
+[node name="Music_Slider" type="HSlider" parent="VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -30.0
+max_value = 0.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Game Sound" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Game:"
+
+[node name="Game_Slider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -30.0
+max_value = 0.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Full Screen:"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer3/FullScreen"]
+layout_mode = 0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="FadeIn" parent="." instance=ExtResource("5")]
+layout_mode = 0
+
+[node name="UISound" parent="." instance=ExtResource("6")]
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer1/Music_Slider" to="." method="_on_Music_Slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/Game_Slider" to="." method="_on_Game_Slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/FullScreen/CheckBox" to="." method="_on_CheckBox_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

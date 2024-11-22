@@ -14,7 +14,7 @@ var coin_limit = 10
 #Reminder Panel
 @onready var reminder_panel = $UI/ReminderPopup
 
-signal get_Bet(bet)
+#signal get_Bet(bet)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
