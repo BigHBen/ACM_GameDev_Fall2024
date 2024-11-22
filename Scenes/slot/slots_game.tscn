@@ -212,6 +212,47 @@ horizontal_alignment = 1
 [node name="FinishTimer" type="Timer" parent="."]
 wait_time = 4.0
 
+[node name="FreezePanel" type="Panel" parent="."]
+visible = false
+offset_left = 217.0
+offset_top = 93.0
+offset_right = 966.0
+offset_bottom = 518.0
+
+[node name="Button1" type="Button" parent="FreezePanel"]
+z_index = 1
+layout_mode = 0
+offset_left = 130.0
+offset_top = 131.0
+offset_right = 264.0
+offset_bottom = 315.0
+
+[node name="Button2" type="Button" parent="FreezePanel"]
+z_index = 1
+offset_left = 407.0
+offset_top = 128.0
+offset_right = 541.0
+offset_bottom = 312.0
+
+[node name="Button3" type="Button" parent="FreezePanel"]
+z_index = 1
+offset_left = 273.0
+offset_top = 128.0
+offset_right = 407.0
+offset_bottom = 312.0
+
+[node name="Label" type="Label" parent="FreezePanel"]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 54.0
+offset_right = 543.0
+offset_bottom = 113.0
+text = "You used Freeze Slot 
+Click slot to freeze."
+
 [connection signal="pressed" from="Control/Button" to="." method="_on_Replay_pressed"]
 [connection signal="animation_finished" from="WinPanel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="FinishTimer" to="." method="_on_finish_timer_timeout"]
+[connection signal="pressed" from="FreezePanel/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="FreezePanel/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="FreezePanel/Button3" to="." method="_on_button_3_pressed"]
