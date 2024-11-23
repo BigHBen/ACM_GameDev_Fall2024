@@ -229,6 +229,7 @@ offset_bottom = 315.0
 
 [node name="Button2" type="Button" parent="FreezePanel"]
 z_index = 1
+layout_mode = 0
 offset_left = 407.0
 offset_top = 128.0
 offset_right = 541.0
@@ -236,6 +237,7 @@ offset_bottom = 312.0
 
 [node name="Button3" type="Button" parent="FreezePanel"]
 z_index = 1
+layout_mode = 0
 offset_left = 273.0
 offset_top = 128.0
 offset_right = 407.0

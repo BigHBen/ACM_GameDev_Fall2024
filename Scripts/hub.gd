@@ -60,9 +60,11 @@ func accumulate_winnings():
 #Present player with new bill amount and update labels accordingly
 func start_round() -> void:
 	
+	
 	# First round setup
-	if round_number < 1:
+	if round_number < 1 and not currency_manager.get_shop_used():
 		currency_manager.set_balance(INITIAL_BALANCE)  # Initialize player balance
+	currency_manager.set_shop_used(false)
 	
 	round_number += 1  # Increment round number
 	

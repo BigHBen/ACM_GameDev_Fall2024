@@ -362,8 +362,7 @@ _data = {
 
 [node name="Hub" type="Node2D"]
 script = ExtResource("1_hugjr")
-INITIAL_BALANCE = 0
-casino_time = 45
+casino_time = 5
 
 [node name="Node2D" type="Node2D" parent="."]
 scale = Vector2(1e-05, 1e-05)

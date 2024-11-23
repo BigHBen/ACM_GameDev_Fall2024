@@ -10,6 +10,7 @@ var minigames =  {
 #currency
 @onready var Currency_Manager = get_node("/root/CurrencyManager")
 
+@export var double_money = 20 # Extra money to give player
 #Timer
 @onready var casino_timer = get_node("/root/CasinoTimer")
 @onready var minigame_manager = get_node("/root/MinigameManager")
@@ -23,6 +24,7 @@ var minigames =  {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(casino_timer.time_left)
 	background_music.volume_db = -25.0
 	backgronud_crowd.volume_db = -25.0
 	background_music.play(46)
@@ -65,11 +67,15 @@ func _get_powerups():
 	if(MinigameManager.get_powerup("Double_Money") != null && MinigameManager.get_powerup("Double_Money")[1] == true):
 		MinigameManager.get_powerup("Double_Money")[1] = false
 		if(Currency_Manager.get_balance() == 0):
-			Currency_Manager.set_balance(20) 
+			print("You Have Double Money (U have 0 dolar)!" ," you've earned: ",str(minigame_manager.winning_bet + double_money))
+			#minigame_manager.set_winning_bet((minigame_manager.winning_bet + double_money))
+			Currency_Manager.set_balance(minigame_manager.get_winning_bet() + 50)
 			$UI/Panel4/Label.text = "You Have activated gotten $20"
 		else:
-			var bal = Currency_Manager.get_balance()
-			Currency_Manager.set_balance(bal * 2)
+			var bal = Currency_Manager.get_balance() 
+			print("You Have Double Money!" ," you've earned: ",str(minigame_manager.winning_bet * 2))
+			#minigame_manager.set_winning_bet(minigame_manager.winning_bet * 2)
+			Currency_Manager.set_balance(minigame_manager.get_winning_bet() + (bal * 2))
 			$UI/Panel4/Label.text = "You Have activated gotten double money"
 		$UI/Panel4.visible = true
 		await get_tree().create_timer(1).timeout

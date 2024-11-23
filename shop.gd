@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var minigame_manager = get_node("/root/MinigameManager")
-@onready var Currecy_Manager = get_node("/root/CurrencyManager")
+@onready var Currency_Manager = get_node("/root/CurrencyManager")
 var first_power
 var second_power
 var third_power
@@ -39,37 +39,24 @@ func _process(delta: float) -> void:
 
 
 func _on_first_power_pressed() -> void:
-	if(minigame_manager.get_powerup(first_power)[2] <= Currecy_Manager.get_balance()):
-		if (minigame_manager.get_powerup(first_power)[1] == false):
-			minigame_manager.get_powerup(first_power)[1] = true
-		else:
-			$already_bought.visible = true
-			await get_tree().create_timer(1).timeout
-			$already_bought.visible = false
-	else:
-		$insufficient.visible = true
-		await get_tree().create_timer(1).timeout
-		$insufficient.visible = false
+	select_power(first_power)
 
 
 func _on_second_power_pressed() -> void:
-	if(minigame_manager.get_powerup(second_power)[2] <= Currecy_Manager.get_balance()):
-		if (minigame_manager.get_powerup(second_power)[1] == false):
-			minigame_manager.get_powerup(second_power)[1] = true
-		else:
-			$already_bought.visible = true
-			await get_tree().create_timer(1).timeout
-			$already_bought.visible = false
-	else:
-		$insufficient.visible = true
-		await get_tree().create_timer(1).timeout
-		$insufficient.visible = false
+	select_power(second_power)
 
 
 func _on_third_power_pressed() -> void:
-	if(minigame_manager.get_powerup(third_power)[2] <= Currecy_Manager.get_balance()):
-		if (minigame_manager.get_powerup(third_power)[1] == false):
-			minigame_manager.get_powerup(third_power)[1] = true
+	select_power(third_power)
+
+func select_power(powerup):
+	if(minigame_manager.get_powerup(powerup)[2] <= Currency_Manager.get_balance()):
+		if (minigame_manager.get_powerup(powerup)[1] == false):
+			minigame_manager.get_powerup(powerup)[1] = true
+			
+			#Set new balance after payment
+			Currency_Manager.set_balance(Currency_Manager.get_balance() - minigame_manager.get_powerup(powerup)[2])
+			print("You've bought a powerup! %s Your new Balance: %s" % [minigame_manager.get_powerup(powerup),Currency_Manager.get_balance()])
 		else:
 			$already_bought.visible = true
 			await get_tree().create_timer(1).timeout
@@ -78,9 +65,10 @@ func _on_third_power_pressed() -> void:
 		$insufficient.visible = true
 		await get_tree().create_timer(1).timeout
 		$insufficient.visible = false
-		
+
 
 func _on_leave_pressed() -> void:
-	var rnd = Currecy_Manager.get_round()
-	Currecy_Manager.set_round(rnd-1)
+	var rnd = Currency_Manager.get_round()
+	Currency_Manager.set_round(rnd-1)
+	Currency_Manager.set_shop_used(true)
 	get_tree().change_scene_to_file("res://Scenes/hub.tscn")

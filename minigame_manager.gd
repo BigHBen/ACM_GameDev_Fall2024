@@ -5,7 +5,7 @@ var current_scene = null
 var winning_bet = 0 : set = set_winning_bet, get = get_winning_bet
 var minigame_count : int = 0
 
-var powerups = [["Freeze_Slot", true, 20], 
+var powerups = [["Freeze_Slot", false, 20], 
 				["Double_Time", false, 5],
 				["Double_Money", false, 10]]
 
@@ -62,7 +62,7 @@ func set_slots_bet_amount(value):
 func get_size_powerup():
 	return (powerups.size())
 	
-func set_powerup(value):
+func set_powerup(_value):
 	pass
 
 func get_powerup(value):
@@ -76,5 +76,6 @@ func get_powerup(value):
 		if(find != -1): return powerups[find]
 		else:
 			return 
+
 func do_something():
 	pass

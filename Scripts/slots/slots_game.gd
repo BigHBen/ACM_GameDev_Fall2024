@@ -240,6 +240,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 				#$Audio/lose_result2.play()
 			
 			minigame_manager.set_winning_bet(minigame_manager.winning_bet + WIN_AMOUNT)
+			#CurrencyManager.set_balance(CurrencyManager.get_balance()+WIN_AMOUNT)
 			
 		else:
 			winnings_label.start_effect(0)
