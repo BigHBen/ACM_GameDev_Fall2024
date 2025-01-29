@@ -33,21 +33,24 @@ func load_powerups():
 	$"UI 2/HBoxContainer/VBoxContainer3/third_power".text = minigame_manager.get_powerup(third_power)[0]
 	$"UI 2/HBoxContainer/VBoxContainer3/price3".text = str("Price: ", minigame_manager.get_powerup(third_power)[2])
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 
 func _on_first_power_pressed() -> void:
 	select_power(first_power)
+	$"UI 2/AnimationPlayer".play("transaction1")
 
 
 func _on_second_power_pressed() -> void:
 	select_power(second_power)
+	$"UI 2/AnimationPlayer".play("transaction2")
 
 
 func _on_third_power_pressed() -> void:
 	select_power(third_power)
+	$"UI 2/AnimationPlayer".play("transaction3")
 
 func select_power(powerup):
 	if(minigame_manager.get_powerup(powerup)[2] <= Currency_Manager.get_balance()):

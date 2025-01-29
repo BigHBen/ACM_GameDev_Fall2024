@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4dpp14ydnv6c"]
+
+[ext_resource type="Script" path="res://Scenes/game_over.gd" id="1_j4v6k"]
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="2_ee6u5"]
+
+[sub_resource type="Animation" id="Animation_3bmna"]
+resource_name = "ending1"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5oeh"]
+_data = {
+"ending1": SubResource("Animation_3bmna")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6mrj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[sub_resource type="Animation" id="Animation_xmirj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_spx4i"]
+resource_name = "title_rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0, 0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2xwn"]
+_data = {
+"RESET": SubResource("Animation_xmirj"),
+"title_rotate": SubResource("Animation_spx4i")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3y2s"]
+font = ExtResource("2_ee6u5")
+font_size = 200
+
+[node name="Game_Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j4v6k")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w5oeh")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(576, 324)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Gameovertext" type="Panel" parent="."]
+visible = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_q6mrj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gameovertext"]
+libraries = {
+"": SubResource("AnimationLibrary_j2xwn")
+}
+autoplay = "title_rotate"
+
+[node name="TEXT" type="Label" parent="Gameovertext"]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 214.0
+offset_right = 948.0
+offset_bottom = 394.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_f3y2s")
+horizontal_alignment = 1

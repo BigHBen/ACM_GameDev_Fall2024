@@ -15,6 +15,9 @@ var casino ="res://Scenes/casino.tscn"
 @onready var deposit_button : Button = $UI/MenuPanel/VBoxContainer/DepositBox/Deposit
 @onready var withdrawal_button : Button = $UI/MenuPanel/VBoxContainer/WithdrawBox/Withdrawal
 
+#Effects
+@onready var menu_anim : AnimationPlayer = $UI/MenuPanel/AnimationPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	deposit_entry.max_value = max_transaction_amount
@@ -32,8 +35,11 @@ func _on_game_exit_button_down() -> void:
 	get_tree().change_scene_to_file(casino)
 
 func _on_button_pressed(button_pressed: Button):
+	
 	match button_pressed:
 		deposit_button: 
 			process_transaction("Deposit", deposit_entry.value)
+			menu_anim.play("transaction1")
 		withdrawal_button:
 			process_transaction("Withdrawal", -withdraw_entry.value)
+			menu_anim.play("transaction2")

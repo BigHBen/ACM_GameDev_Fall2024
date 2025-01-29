@@ -3,8 +3,10 @@ extends Node2D
 # Variables
 var balance : int = 0 : set = set_balance, get = get_balance
 var debt : int = 0 : set = set_debt, get = get_debt
+var debt_count : int = 0
 var curr_round : int = 0 : set = set_round, get = get_round
 var shop_used : bool = false : set = set_shop_used, get = get_shop_used
+const MAX_DEBT_COUNT = 1
 
 signal currency_manager_loaded
 

@@ -254,7 +254,6 @@ func _on_temp_punch_ani_timeout() -> void:
 func _on_start_timer_timeout() -> void:
 	start_game()
 
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "popup":
 		#Will be passed to minigame manager -> Added to player balance

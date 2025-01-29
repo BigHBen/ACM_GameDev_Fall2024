@@ -1,8 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddrj727cc3jhk"]
+[gd_scene load_steps=8 format=3 uid="uid://ddrj727cc3jhk"]
 
 [ext_resource type="Texture2D" uid="uid://cxia72218ukhw" path="res://Assets/random_photos/Dev/atm/bank-building-with-cityscape_1284-52265.png" id="1_3l663"]
 [ext_resource type="Script" path="res://Scenes/Dev/atm_scene/offshore_bank.gd" id="1_ng4jm"]
 [ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="3_43ty7"]
+
+[sub_resource type="Animation" id="Animation_ayax5"]
+resource_name = "transaction1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/DepositBox/Deposit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2.82843, 17.7531),
+"update": 0,
+"values": [Color(0.106418, 0.773087, 0.552679, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ril6x"]
+resource_name = "transaction2"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/WithdrawBox/Withdrawal:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2.82843, 17.7531),
+"update": 0,
+"values": [Color(0.106418, 0.773087, 0.552679, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwp4x"]
+_data = {
+"transaction1": SubResource("Animation_ayax5"),
+"transaction2": SubResource("Animation_ril6x")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_574e7"]
 font = ExtResource("3_43ty7")
@@ -28,6 +66,11 @@ offset_left = 263.0
 offset_top = 74.0
 offset_right = 903.0
 offset_bottom = 512.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/MenuPanel"]
+libraries = {
+"": SubResource("AnimationLibrary_bwp4x")
+}
 
 [node name="Ttitle" type="VBoxContainer" parent="UI/MenuPanel"]
 layout_mode = 1

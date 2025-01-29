@@ -22,6 +22,7 @@ var bill_increment: int = 10
 var current_bill: int = 0 : set = set_bill_amount, get = get_bill_amount
 @export_range(1,120) var casino_time : int = 30
 @onready var GAME_TIMER : Timer = get_node("/root/CasinoTimer")
+#const MAX_DEBT_COUNT = 1
 
 #Button Variables
 @onready var menu_anim = $UI/MenuButtons/AnimationPlayer
@@ -56,6 +57,15 @@ func accumulate_winnings():
 	var new_balance = currency_manager.balance + minigame_manager.get_winning_bet()
 	currency_manager.set_balance(new_balance)
 	print("Earnings from casino: $%s"  % [minigame_manager.get_winning_bet()])
+
+# Move to cutscene, then back to main menu
+#func game_over() -> void:
+	#print("Debt for too long, GAME OVER")
+	#var tween = create_tween()
+	#tween.set_trans(Tween.TRANS_LINEAR)
+	#tween.set_ease(Tween.EASE_IN_OUT)
+	#tween.tween_property(self, "modulate", Color(0, 0, 0, 1), 2.0)
+	#await tween.finished
 
 #Present player with new bill amount and update labels accordingly
 func start_round() -> void:
@@ -116,6 +126,15 @@ func go_to_casino():
 	#Start casino timer
 	GAME_TIMER.start_timer(casino_time) 
 
+# If player is in debt for more than three consecutive rounds, GAME OVER
+#func check_debt():
+	#current_bill = currency_manager.debt
+	#if current_bill == 0: currency_manager.debt_count = 0
+	#else: currency_manager.debt_count += 1
+	#
+	#print("Your in for %d more rounds" % [MAX_DEBT_COUNT-currency_manager.debt_count])
+	#if currency_manager.debt_count > MAX_DEBT_COUNT:
+		#game_over()
 
 func pay_debt():
 	var old_balance = currency_manager.balance

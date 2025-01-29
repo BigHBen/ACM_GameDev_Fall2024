@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4fila5atd6n3"
+path="res://.godot/imported/So the summer has passed.mp3-107846d3ec55dd529423558c926d6b66.mp3str"
+
+[deps]
+
+source_file="res://Audio/Main_Menu/So the summer has passed.mp3"
+dest_files=["res://.godot/imported/So the summer has passed.mp3-107846d3ec55dd529423558c926d6b66.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

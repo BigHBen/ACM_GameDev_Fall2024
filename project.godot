@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameDevFall2024_QYLG"
-run/main_scene="res://Scenes/hub.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Icon/casino-chip.png"
 

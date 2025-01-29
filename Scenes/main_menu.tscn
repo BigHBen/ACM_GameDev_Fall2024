@@ -1,0 +1,420 @@
+[gd_scene load_steps=44 format=3 uid="uid://7sn8bytqxvqw"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_gqfa5"]
+[ext_resource type="Texture2D" uid="uid://dg4bnpc3u0hhr" path="res://Assets/Animations/Main_Menu/background/background-floor.png" id="2_efobn"]
+[ext_resource type="Texture2D" uid="uid://b2o140go55h1r" path="res://Assets/Animations/Main_Menu/background/background.png" id="3_nl33i"]
+[ext_resource type="FontFile" uid="uid://c4c4re1prp0j5" path="res://Assets/Fonts/Summer Break.otf" id="4_m7e6j"]
+[ext_resource type="Script" path="res://settings_volume_slider.gd" id="5_s555d"]
+[ext_resource type="Script" path="res://option_button.gd" id="6_688nc"]
+[ext_resource type="AudioStream" uid="uid://d4fila5atd6n3" path="res://Audio/Main_Menu/So the summer has passed.mp3" id="7_t1kob"]
+[ext_resource type="AudioStream" uid="uid://d25h2f3i2bdqs" path="res://Audio/cha ching sound effect download.wav" id="8_bqeib"]
+[ext_resource type="Texture2D" uid="uid://bmyxqh6xqoe4" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_00_delay-0.06s.png" id="9_qqf73"]
+[ext_resource type="Texture2D" uid="uid://6bvqk4s1xop6" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_01_delay-0.06s.png" id="10_uccgd"]
+[ext_resource type="Texture2D" uid="uid://o8g5y0r8lsfo" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_02_delay-0.06s.png" id="11_y1f8n"]
+[ext_resource type="Texture2D" uid="uid://bkv107knhmts5" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_03_delay-0.06s.png" id="12_hdnrv"]
+[ext_resource type="Texture2D" uid="uid://b71glo6er2jl0" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_04_delay-0.06s.png" id="13_tnd24"]
+[ext_resource type="Texture2D" uid="uid://bt5wt753q3nml" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_05_delay-0.06s.png" id="14_0awuv"]
+[ext_resource type="Texture2D" uid="uid://bovmr12yx2uof" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_06_delay-0.06s.png" id="15_onc3g"]
+[ext_resource type="Texture2D" uid="uid://bujb5c0xrbque" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_07_delay-0.06s.png" id="16_2ffby"]
+[ext_resource type="Texture2D" uid="uid://ck81j2yrm4xtk" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_08_delay-0.06s.png" id="17_iioam"]
+[ext_resource type="Texture2D" uid="uid://bdndomlak5ior" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_09_delay-0.06s.png" id="18_fqihx"]
+[ext_resource type="Texture2D" uid="uid://gps53hwxpg4n" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_10_delay-0.06s.png" id="19_we50q"]
+[ext_resource type="Texture2D" uid="uid://p6trs2pble6g" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_11_delay-0.06s.png" id="20_lowse"]
+[ext_resource type="Texture2D" uid="uid://bhf03ia2ydywh" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_12_delay-0.06s.png" id="21_wixl5"]
+[ext_resource type="Texture2D" uid="uid://dqm122s81fslp" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_13_delay-0.06s.png" id="22_wv1q2"]
+[ext_resource type="Texture2D" uid="uid://cqyqgio8h7nc4" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_14_delay-0.06s.png" id="23_1kga0"]
+[ext_resource type="Texture2D" uid="uid://dduii35lxi7f2" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_15_delay-0.06s.png" id="24_kp47t"]
+[ext_resource type="Texture2D" uid="uid://frbi80ct270a" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_16_delay-0.06s.png" id="25_67gad"]
+[ext_resource type="Texture2D" uid="uid://b7rmf6ev0fv6" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_17_delay-0.06s.png" id="26_8pspy"]
+[ext_resource type="Texture2D" uid="uid://bb4xu7dfe2fwy" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_18_delay-0.06s.png" id="27_qu2q8"]
+[ext_resource type="Texture2D" uid="uid://cb386fr74qloy" path="res://Assets/Animations/Main_Menu/spinning_chip/frame_19_delay-0.06s.png" id="28_t4v7p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jnes"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_xmirj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_spx4i"]
+resource_name = "title_rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0, 0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2xwn"]
+_data = {
+"RESET": SubResource("Animation_xmirj"),
+"title_rotate": SubResource("Animation_spx4i")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_lxh0h"]
+font = ExtResource("4_m7e6j")
+font_size = 90
+
+[sub_resource type="LabelSettings" id="LabelSettings_dlyfb"]
+font = ExtResource("4_m7e6j")
+font_size = 130
+
+[sub_resource type="Animation" id="Animation_ndk4j"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("play:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n4onq"]
+resource_name = "move_scene"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("play:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(2.82843, 17.7531),
+"update": 0,
+"values": [Color(0.106418, 0.773087, 0.552679, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yg2j6"]
+_data = {
+"RESET": SubResource("Animation_ndk4j"),
+"move_scene": SubResource("Animation_n4onq")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urfs1"]
+bg_color = Color(1, 1, 1, 0.458824)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ubwx"]
+font = ExtResource("4_m7e6j")
+font_size = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0njj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_le144"]
+font = ExtResource("4_m7e6j")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_m32fw"]
+font = ExtResource("4_m7e6j")
+font_size = 40
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptjw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_qqf73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uccgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_y1f8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hdnrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tnd24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0awuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_onc3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2ffby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_iioam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fqihx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_we50q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_lowse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wixl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_wv1q2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_1kga0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_kp47t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_67gad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8pspy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_qu2q8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_t4v7p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gqfa5")
+
+[node name="background2" type="Sprite2D" parent="."]
+position = Vector2(1728, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_efobn")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_nl33i")
+
+[node name="Title" type="Panel" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jnes")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
+libraries = {
+"": SubResource("AnimationLibrary_j2xwn")
+}
+autoplay = "title_rotate"
+
+[node name="TITLE_TEXT" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 27.0
+offset_right = 759.0
+offset_bottom = 108.0
+text = "QUIT YOUR LIFE AND"
+label_settings = SubResource("LabelSettings_lxh0h")
+
+[node name="TITLE_TEXT2" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 667.0
+offset_top = 66.0
+offset_right = 987.0
+offset_bottom = 183.0
+text = "GAMBLE"
+label_settings = SubResource("LabelSettings_dlyfb")
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -221.0
+offset_right = 324.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="menu_animator" type="AnimationPlayer" parent="MenuButtons"]
+libraries = {
+"": SubResource("AnimationLibrary_yg2j6")
+}
+
+[node name="play" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m7e6j")
+theme_override_font_sizes/font_size = 70
+text = "PLAY"
+
+[node name="settings" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m7e6j")
+theme_override_font_sizes/font_size = 70
+text = "SETTINGS"
+
+[node name="quit" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m7e6j")
+theme_override_font_sizes/font_size = 70
+text = "QUIT"
+
+[node name="settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_right = 1152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="settings_panel" type="Panel" parent="settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -197.0
+offset_right = 400.0
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_urfs1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings/settings_panel"]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 782.0
+offset_bottom = 392.0
+theme_override_constants/separation = 20
+
+[node name="seperator2" type="Label" parent="settings/settings_panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings/settings_panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="master_vol_label" type="Label" parent="settings/settings_panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_7ubwx")
+
+[node name="volume_slider" type="HSlider" parent="settings/settings_panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_h0njj")
+max_value = 1.0
+step = 0.05
+ticks_on_borders = true
+script = ExtResource("5_s555d")
+bus_name = "Master"
+
+[node name="seperator" type="Label" parent="settings/settings_panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="HBoxContainer" parent="settings/settings_panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="fullscreen_label" type="Label" parent="settings/settings_panel/VBoxContainer/Fullscreen"]
+layout_mode = 2
+text = "FullScreen"
+label_settings = SubResource("LabelSettings_le144")
+
+[node name="full_button" type="CheckButton" parent="settings/settings_panel/VBoxContainer/Fullscreen"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+
+[node name="WindowSIZE" type="HBoxContainer" parent="settings/settings_panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="fullscreen_label" type="Label" parent="settings/settings_panel/VBoxContainer/WindowSIZE"]
+layout_mode = 2
+text = "wINDOW sIZE"
+label_settings = SubResource("LabelSettings_m32fw")
+
+[node name="seperator" type="Label" parent="settings/settings_panel/VBoxContainer/WindowSIZE"]
+layout_mode = 2
+text = " "
+label_settings = SubResource("LabelSettings_m32fw")
+
+[node name="OptionButton" type="OptionButton" parent="settings/settings_panel/VBoxContainer/WindowSIZE"]
+layout_mode = 2
+script = ExtResource("6_688nc")
+
+[node name="BackButton" type="Button" parent="settings/settings_panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 327.0
+offset_right = 262.0
+offset_bottom = 371.0
+theme_override_fonts/font = ExtResource("4_m7e6j")
+theme_override_font_sizes/font_size = 40
+text = "Back
+"
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="background_music" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_t1kob")
+max_distance = 4000.0
+
+[node name="play_audio" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("8_bqeib")
+
+[node name="Extras" type="Node2D" parent="."]
+
+[node name="button_coin" type="AnimatedSprite2D" parent="Extras"]
+position = Vector2(-32, -32)
+sprite_frames = SubResource("SpriteFrames_ptjw2")
+autoplay = "default"
+
+[connection signal="mouse_entered" from="MenuButtons/play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="MenuButtons/play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="MenuButtons/settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="pressed" from="MenuButtons/settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="MenuButtons/quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="MenuButtons/quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="settings/settings_panel/VBoxContainer/Fullscreen/full_button" to="." method="_on_full_button_toggled"]
+[connection signal="pressed" from="settings/settings_panel/BackButton" to="." method="_on_back_button_pressed"]

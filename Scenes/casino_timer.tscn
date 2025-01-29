@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://v1edvxst6dio"]
+[gd_scene load_steps=12 format=3 uid="uid://v1edvxst6dio"]
 
 [ext_resource type="Script" path="res://Scripts/casino_timer.gd" id="1_ylown"]
 [ext_resource type="PackedScene" uid="uid://uoljc0ahxvy1" path="res://Scenes/timer_bar.tscn" id="2_a6plg"]
@@ -77,6 +77,9 @@ _data = {
 font = ExtResource("5_43w8s")
 font_size = 75
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdcyu"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Casino_Timer" type="Timer"]
 script = ExtResource("1_ylown")
 game_time = 1
@@ -146,6 +149,15 @@ text = "
 "
 label_settings = SubResource("LabelSettings_jshlo")
 horizontal_alignment = 1
+
+[node name="fade_panel" type="Panel" parent="."]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gdcyu")
 
 [connection signal="animation_finished" from="TimeoutPanel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 

@@ -2,10 +2,11 @@ extends Timer
 
 const GAME_TIME_DEFAULT = 10
 const HOME_SCENE = "res://Scenes/hub.tscn"
+const GAME_OVER = "res://Scenes/game_over.tscn"
 
 # Autoload Global Variables
 @onready var minigame_manager = get_node("/root/MinigameManager")
-
+@onready var currency_manager = get_node("/root/CurrencyManager")
 # Scene variables
 @onready var alarm = $Alarm
 @onready var return_timer = $ReturnTimer
@@ -32,6 +33,7 @@ signal halfway
 
 func _ready():
 	timer_bar.visible = false
+	$fade_panel.modulate = Color(0,0,0,0)
 	if debug_mode:
 		start_timer()
 
@@ -85,6 +87,31 @@ func pause_scene():
 	#Pause current scene
 	get_tree().current_scene.process_mode = Node.PROCESS_MODE_DISABLED
 
+func check_debt():
+	var current_bill = currency_manager.debt
+	if current_bill == 0: currency_manager.debt_count = 0
+	else: currency_manager.debt_count += 1
+	
+	#print("Your in for %d more rounds" % [currency_manager.MAX_DEBT_COUNT-currency_manager.debt_count])
+	if currency_manager.debt_count > currency_manager.MAX_DEBT_COUNT:
+		game_over()
+		return true
+	return false
+
+func game_over() -> void:
+	
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_LINEAR)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property($fade_panel, "modulate", Color(0, 0, 0, 1), 2.0)
+	await tween.finished
+	print("Debt for too long, GAME OVER")
+	for node in self.get_children():
+		if node is not Timer:
+			node.visible = false
+	reset_timer()
+	get_tree().change_scene_to_file(GAME_OVER)
+
 func reset_timer():
 	elapsed_time = 0.0
 	seconds_passed = 0
@@ -111,10 +138,13 @@ func get_game_time():
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"popup":
-			var total = minigame_manager.winning_bet
-			$TimeoutPanel/VBoxContainer/HBoxContainer/Winnings.start_effect(total)
-			timer_return_label.text = "Time to go back home...."
-			timer_win_anim.play("countdown")
+			if !check_debt():
+				var total = minigame_manager.winning_bet
+				$TimeoutPanel/VBoxContainer/HBoxContainer/Winnings.start_effect(total)
+				timer_return_label.text = "Time to go back home...."
+				timer_win_anim.play("countdown")
+			else:
+				timer_return_label = ""
 		"countdown":
-			reset_timer()
-			get_tree().change_scene_to_file(HOME_SCENE)
+				reset_timer()
+				get_tree().change_scene_to_file(HOME_SCENE)
